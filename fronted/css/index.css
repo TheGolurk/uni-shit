@@ -1,10 +1,10 @@
 .container {
-  max-width: 900px;
+  max-width: 950px;
 }
 
 .logo{
   color:#fff;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .site-header {
@@ -14,7 +14,7 @@
 }
 
 .site-header a {
-  color: #8e8e8e;
+  color: #a09c9c;
   transition: color .15s ease-in-out;
 }
 
