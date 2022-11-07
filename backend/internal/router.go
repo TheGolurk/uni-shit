@@ -2,6 +2,7 @@ package internal
 
 import (
 	"database/sql"
+
 	"github.com/labstack/echo/v4"
 )
 
@@ -14,4 +15,5 @@ func SetRoutes(e *echo.Echo, db *sql.DB) {
 
 	e.POST("/login", service.Login)
 	e.POST("/create/user", service.CreateUser)
+	e.POST("/create/user/acceso", service.CreateUserAccess)
 }

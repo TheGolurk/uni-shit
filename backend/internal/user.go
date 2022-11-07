@@ -90,6 +90,10 @@ func (s *Service) CreateUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, "created")
 }
 
+func (s *Service) CreateUserAccess(c echo.Context) error {
+	return nil
+}
+
 func hashAndSalt(pwd string) (string, error) {
 	pwdByte := []byte(pwd)
 
