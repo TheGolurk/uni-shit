@@ -10,6 +10,7 @@ type User struct {
 
 type UserAccess struct {
 	IDTipo     int    `json:"id_tipo,omitempty"`
+	Tablas     string `json:"tablas,omitempty"`
 	HoraInicio string `json:"hora_inicio,omitempty"`
 	HoraFinal  string `json:"hora_final,omitempty"`
 }

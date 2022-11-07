@@ -91,7 +91,47 @@ func (s *Service) CreateUser(c echo.Context) error {
 }
 
 func (s *Service) CreateUserAccess(c echo.Context) error {
-	return nil
+	var useraccess models.UserAccess
+
+	if err := c.Bind(&useraccess); err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	res, err := s.db.Exec("")
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "not created")
+	}
+
+	if num, err := res.RowsAffected(); err != nil || num < 1 {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "not created")
+	}
+
+	return c.JSON(http.StatusOK, "Created successfully")
+
+}
+
+func (s *Service) DeleteUser(c echo.Context) error {
+	nombreusuario := c.QueryParam(("username"))
+	if nombreusuario == "" {
+		log.Println(nombreusuario)
+		return c.JSON(http.StatusBadRequest, "no user to delete")
+	}
+
+	res, err := s.db.Exec("DELETE FROM USUARIO WHERE NOMBREUSUARIO = ?", nombreusuario)
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "no deleted")
+	}
+
+	if num, err := res.RowsAffected(); err != nil || num < 1 {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "no deleted")
+	}
+
+	return c.JSON(http.StatusOK, "Deleted successfully")
 }
 
 func hashAndSalt(pwd string) (string, error) {

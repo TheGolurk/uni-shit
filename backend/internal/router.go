@@ -13,7 +13,13 @@ type Service struct {
 func SetRoutes(e *echo.Echo, db *sql.DB) {
 	service := Service{db: db}
 
-	e.POST("/login", service.Login)
+	// User
 	e.POST("/create/user", service.CreateUser)
-	e.POST("/create/user/acceso", service.CreateUserAccess)
+	e.DELETE("/user/delete", service.DeleteUser)
+
+	// Login
+	e.POST("/login", service.Login)
+
+	// User Access management
+	e.POST("/user/accesohora", service.CreateUserAccess)
 }
