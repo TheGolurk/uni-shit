@@ -10,7 +10,6 @@ type Service struct {
 }
 
 func SetRoutes(e *echo.Echo, db *sql.DB) {
-
 	service := Service{db: db}
 
 	e.POST("/login", service.Login)
