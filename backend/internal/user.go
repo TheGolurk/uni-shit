@@ -2,8 +2,8 @@ package internal
 
 import (
 	"errors"
+	"log"
 	"net/http"
-	"time"
 
 	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
@@ -18,6 +18,7 @@ func (s *Service) Login(c echo.Context) error {
 	)
 
 	if err := c.Bind(&user); err != nil {
+		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
@@ -26,6 +27,7 @@ func (s *Service) Login(c echo.Context) error {
 		user.Username,
 	)
 	if err != nil {
+		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
@@ -33,23 +35,20 @@ func (s *Service) Login(c echo.Context) error {
 
 	for rows.Next() {
 		if err = rows.Scan(&passwdValue, &IDTipo); err != nil {
+			log.Println(err)
 			return c.JSON(http.StatusInternalServerError, "")
 		}
 	}
 
 	if passwdValue == nil || IDTipo == nil {
+		log.Println(err)
 		return c.JSON(http.StatusBadRequest, errors.New("invalid user or password"))
 	}
 
 	if err = bcrypt.CompareHashAndPassword([]byte(*passwdValue), []byte(user.Password)); err != nil {
+		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
-
-	c.SetCookie(&http.Cookie{
-		Name:    "login-user",
-		Value:   user.Username,
-		Expires: time.Now().Add(24 * time.Hour),
-	})
 
 	return c.JSON(http.StatusOK, models.User{
 		Username: user.Username,
@@ -63,11 +62,13 @@ func (s *Service) CreateUser(c echo.Context) error {
 	)
 
 	if err := c.Bind(&user); err != nil {
+		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
 	pwd, err := hashAndSalt(user.Password)
 	if err != nil {
+		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
@@ -82,6 +83,7 @@ func (s *Service) CreateUser(c echo.Context) error {
 		user.IdTipo,
 	)
 	if err != nil {
+		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 

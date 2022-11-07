@@ -5,29 +5,31 @@ async function CreateUser() {
     let lastName = document.getElementById('floatingLastName').value;
     let typeUser = document.getElementById('floatingType').value;
 
-
     const url = 'http://localhost:8080/create/user';
     const body = {
         "username": username,
         "password": password,
         "nombre": name,
         "apellido": lastName,
-        "id_tipo": typeUser
+        "id_tipo": parseInt(typeUser)
     };
 
     try {
         const resp = await axios.post(url, body)
-        console.log(resp);
+        
+        alert('Creado con exito');
+
     } catch (err) {
         console.log(err);
+        alert('No se pudo crear, valida la informacion');
     }
 
 }
 
 
 var form = document.getElementById("CreateUser-form");
-function handleForm(event) { 
-    event.preventDefault(); 
+function handleForm(event) {
+    event.preventDefault();
 }
 
 form.addEventListener('submit', handleForm);

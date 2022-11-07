@@ -14,17 +14,31 @@ async function ExecuteLogin() {
     try {
         const resp = await axios.post(url, body);
 
-        console.log('set cookie', resp.data);
-        setCookie("user-login", resp.data, 2);
+        let urlr = "login.html";
+        if (resp.data.id_tipo == 1) {
+            urlr = 'administrador.html';
+        }else if(resp.data.id_tipo == 2) {
+            urlr = 'personal.html';
+        }else {
+            alert('Tipo de usuario desconocido');
+            return;
+        }
 
-        //window.location.href = 'administrador.html'
-        console.log(resp);
+        setCookie("user-login", JSON.stringify(resp.data), 2);
+
+        window.location = urlr;
+        
 
     } catch (err) {
         console.log(err);
         alert('Usuario o Contraseña invalidos');
     } 
 
+}
+
+function Salir() {
+    eraseCookie('user-login');
+    window.location = "index.html";
 }
 
 function setCookie(name,value,days) {
