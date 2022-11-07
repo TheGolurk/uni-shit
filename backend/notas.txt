@@ -1,0 +1,9 @@
+curl --location --request POST 'localhost:8080/create/user' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "hola1",
+    "password": "hola",
+    "nombre": "Carlos",
+    "apellido": "Trejo",
+    "id_tipo": "1"
+}'
