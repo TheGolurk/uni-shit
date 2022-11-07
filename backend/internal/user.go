@@ -98,7 +98,10 @@ func (s *Service) CreateUserAccess(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	res, err := s.db.Exec("")
+	res, err := s.db.Exec(`
+	INSERT INTO TIPO_ACCESO(ID_TIPO, TABLA, HORARIO_INICIO, HORARIO_FINAL)
+    VALUES (?, ?, ?, ?)`,
+		useraccess.IDTipo, useraccess.Tablas, useraccess.HoraInicio, useraccess.HoraFinal)
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "not created")

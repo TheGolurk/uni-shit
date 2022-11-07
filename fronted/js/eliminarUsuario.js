@@ -4,10 +4,13 @@ async function DeleteUser() {
     const url = `http://localhost:8080/user/delete?username=${username}`;
 
     try {
-        const resp = await axios.delete(url, body)
-        console.log(resp);
+        const resp = await axios.delete(url)
+        
+        alert('Se eliminó correctamente');
+
     } catch (err) {
         console.log(err);
+        alert('No se pudo eliminar');
     }
 
 }

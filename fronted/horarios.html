@@ -19,8 +19,8 @@
 
 <body class="text-center">
     <main class="form-signin w-100 m-auto">
-        <form id="Schedule-form" action="../../form-result.php" method="post" target="_blank">
-        
+        <form id="Schedule-form">
+
             <h1 class="h3 mb-3 fw-normal">ASIGNACIÓN DE HORARIOS</h1>
             <img class="mb-4" src="../fronted/assets/horarioReg.png" alt="" width="80" height="80">
 
@@ -29,7 +29,7 @@
             <p>HORA DE FINALIZACIÓN <input type="time" name="eta"></p>
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingFinalTime" placeholder="Text">
+                <input type="text" class="form-control" id="tablas" placeholder="Text">
                 <label for="floatingInput">Tablas de acceso permitido</label>
             </div>
 
@@ -45,6 +45,8 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/cookies.js"></script>
+    <script src="js/admin.js"></script>
     <script src="js/horario.js"></script>
 
 </body>
