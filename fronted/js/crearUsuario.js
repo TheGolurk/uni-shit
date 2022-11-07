@@ -1,4 +1,4 @@
-async function ExecuteLogin() {
+async function CreateUser() {
     let username = document.getElementById('floatingInput').value;
     let password = document.getElementById('floatingPassword').value;
     let name = document.getElementById('floatingName').value;
