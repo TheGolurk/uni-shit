@@ -5,7 +5,7 @@ async function UpdateUser() {
     let lastName = document.getElementById('floatingLastName').value;
     let typeUser = document.getElementById('floatingType').value;
 
-
+    
     const url = 'http://localhost:8080/user/update';
     const body = {
         "username": username,

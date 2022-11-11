@@ -5,8 +5,7 @@ async function ViewUser() {
     let lastName = document.getElementById('floatingLastName').value;
     let typeUser = document.getElementById('floatingType').value;
 
-
-    const url = 'http://localhost:8080/user/select';
+    const url = 'http://localhost:8080/user';
     const body = {
         "username": username,
         "password": password,
