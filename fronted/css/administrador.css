@@ -54,9 +54,10 @@ body {
 }
 
 .container {
-    max-width: 960px;
+    max-width: 900px;
 }
 
 .pricing-header {
     max-width: 900px;
 }
+
