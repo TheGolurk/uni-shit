@@ -1,4 +1,4 @@
-async function UpdateUser() {
+async function ViewUser() {
     let username = document.getElementById('floatingInput').value;
     let password = document.getElementById('floatingPassword').value;
     let name = document.getElementById('floatingName').value;
@@ -6,7 +6,7 @@ async function UpdateUser() {
     let typeUser = document.getElementById('floatingType').value;
 
 
-    const url = 'http://localhost:8080/user/update';
+    const url = 'http://localhost:8080/user/select';
     const body = {
         "username": username,
         "password": password,
@@ -25,7 +25,7 @@ async function UpdateUser() {
 }
 
 
-var form = document.getElementById("UpdateUser-form");
+var form = document.getElementById("ViewUser-form");
 function handleForm(event) { 
     event.preventDefault(); 
 }
