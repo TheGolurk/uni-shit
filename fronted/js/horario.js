@@ -5,7 +5,7 @@ async function Schedule() {
     let typeUser = document.getElementById('floatingType').value;
 
 
-    const url = 'http://localhost:8080/user/accesohora';
+    const url = 'http://localhost:8070/user/accesohora';
     const body = {
         "hora_inicio": startTime,
         "hora_final": finalTime,

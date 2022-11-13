@@ -5,7 +5,7 @@ async function ExecuteLogin() {
     let username = document.getElementById('floatingInput').value;
     let password = document.getElementById('floatingPassword').value;
 
-    const url = 'http://localhost:8080/login';
+    const url = 'http://localhost:8070/login';
     const body = {
         "username": username,
         "password": password

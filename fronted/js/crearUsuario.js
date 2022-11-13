@@ -5,7 +5,7 @@ async function CreateUser() {
     let lastName = document.getElementById('floatingLastName').value;
     let typeUser = document.getElementById('floatingType').value;
 
-    const url = 'http://localhost:8080/create/user';
+    const url = 'http://localhost:8070/create/user';
     const body = {
         "username": username,
         "password": password,
