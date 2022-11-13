@@ -23,7 +23,7 @@ func (s *Service) Login(c echo.Context) error {
 	}
 
 	rows, err := s.db.Query(
-		`SELECT CONTRASEÑA, IDTIPO FROM USUARIO WHERE NOMBREUSUARIO = ?`,
+		`SELECT PASS, TIPO_ID FROM USUARIO WHERE USERNAME = ?`,
 		user.Username,
 	)
 	if err != nil {
@@ -73,7 +73,7 @@ func (s *Service) CreateUser(c echo.Context) error {
 	}
 
 	_, err = s.db.Exec(`
-	INSERT INTO USUARIO( NOMBREUSUARIO, CONTRASEÑA, NOMBRE, APELLIDO, IDTIPO)
+	INSERT INTO USUARIO( USERNAME, PASS, NOMBRE, APELLIDO, TIPO_ID)
     	VALUES (?, ?, ?, ?, ?);
 		`,
 		user.Username,
@@ -99,7 +99,7 @@ func (s *Service) CreateUserAccess(c echo.Context) error {
 	}
 
 	res, err := s.db.Exec(`
-	INSERT INTO TIPO_ACCESO(ID_TIPO, TABLA, HORARIO_INICIO, HORARIO_FINAL)
+	INSERT INTO TIPO_ACCESO(ID_TIPO	, TABLA, HORARIO_INICIO, HORARIO_FINAL)
     VALUES (?, ?, ?, ?)`,
 		useraccess.IDTipo, useraccess.Tablas, useraccess.HoraInicio, useraccess.HoraFinal)
 	if err != nil {
