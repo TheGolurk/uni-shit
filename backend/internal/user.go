@@ -123,7 +123,7 @@ func (s *Service) DeleteUser(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "no user to delete")
 	}
 
-	res, err := s.db.Exec("DELETE FROM USUARIO WHERE NOMBREUSUARIO = ?", nombreusuario)
+	res, err := s.db.Exec("DELETE FROM USUARIO WHERE USERNAME= ?", nombreusuario)
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "no deleted")
