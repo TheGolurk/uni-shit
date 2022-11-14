@@ -1,6 +1,5 @@
 async function UpdateUser() {
     let username = document.getElementById('floatingInput').value;
-    let password = document.getElementById('floatingPassword').value;
     let name = document.getElementById('floatingName').value;
     let lastName = document.getElementById('floatingLastName').value;
     let typeUser = document.getElementById('floatingType').value;
@@ -9,7 +8,6 @@ async function UpdateUser() {
     const url = 'http://localhost:8080/user/update';
     const body = {
         "username": username,
-        "password": password,
         "nombre": name,
         "apellido": lastName,
         "id_tipo": typeUser
