@@ -137,6 +137,32 @@ func (s *Service) DeleteUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, "Deleted successfully")
 }
 
+func (s *Service) ModifyUser(c echo.Context) error {
+	var (
+		user models.User
+	)
+
+	if err := c.Bind(&user); err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	res, err := s.db.Exec("UPDATE USUARIO SET NOMBRE = ?, APELLIDO = ?, TIPO_ID = ? WHERE USERNAME = ?",
+		user.Nombre, user.Apellido, user.IdTipo, user.Username)
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+
+	}
+
+	if count, err := res.RowsAffected(); count == 0 || err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	return c.JSON(http.StatusOK, "modified successfully")
+}
+
 func hashAndSalt(pwd string) (string, error) {
 	pwdByte := []byte(pwd)
 

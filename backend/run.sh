@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "parando el proceso si existe"
+pkill shituni
+
 echo "corriendo el contenedor de base de datos"
 docker-compose up -d
 
