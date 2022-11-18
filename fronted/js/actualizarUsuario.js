@@ -14,7 +14,7 @@ async function UpdateUser() {
         "apellido": lastName,
         "id_tipo": typeUser
     };
-
+    
     try {
         const resp = await axios.post(url, body)
         console.log(resp);
