@@ -41,7 +41,8 @@
 .nav-scroller .nav {
     display: flex;
     flex-wrap: nowrap;
-    padding-bottom: 1rem;
+    padding-bottom: 5rem;
+    padding-bottom: 5rem;
     margin-top: -1px;
     overflow-x: auto;
     text-align: center;
@@ -58,6 +59,8 @@ body {
 }
 
 .pricing-header {
+    
     max-width: 900px;
+   
 }
 
