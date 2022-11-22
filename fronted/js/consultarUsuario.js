@@ -23,6 +23,25 @@ async function ViewUser() {
 
 }
 
+const items1 = [
+    { username: "chris", nombre: "asdads", apellido: "asdad", id_tipo: 1 },
+  ];
+
+  
+    const table = document.getElementById("tabla-datos");
+    items1.forEach( item => {
+      let row = table.insertRow();
+      let date = row.insertCell(0);
+      date.innerHTML = item.username;
+      let name = row.insertCell(1);
+      name.innerHTML = item.nombre;
+      let apellido = row.insertCell(2);
+      apellido.innerHTML = item.apellido;
+      let tipo = row.insertCell(3);
+      tipo.innerHTML = item.id_tipo;
+    });
+  
+
 
 var form = document.getElementById("ViewUser-form");
 function handleForm(event) { 

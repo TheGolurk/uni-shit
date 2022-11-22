@@ -5,19 +5,22 @@ async function UpdateUser() {
     let typeUser = document.getElementById('floatingType').value;
 
     
-    const url = 'http://localhost:8080/user/update';
+    const url = 'http://localhost:8070/user/modify';
     const body = {
         "username": username,
         "nombre": name,
         "apellido": lastName,
-        "id_tipo": typeUser
+        "id_tipo": parseInt(typeUser)
     };
     
     try {
-        const resp = await axios.post(url, body)
-        console.log(resp);
+        const resp = await axios.put(url, body)
+
+        alert('Se actualizo con exito');
+
     } catch (err) {
         console.log(err);
+        alert('No se pudo actualizar');
     }
 
 }

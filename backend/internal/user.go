@@ -152,7 +152,6 @@ func (s *Service) ModifyUser(c echo.Context) error {
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
-
 	}
 
 	if count, err := res.RowsAffected(); count == 0 || err != nil {
