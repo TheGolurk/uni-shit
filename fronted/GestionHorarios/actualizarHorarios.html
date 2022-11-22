@@ -30,8 +30,8 @@
     <main class="form-signin w-100 m-auto">
         <form id="Schedule-form">
 
-            <h1 class="h3 mb-3 fw-normal">ASIGNACIÓN DE HORARIOS</h1>
-            <img class="mb-4" src="../assets/horarioReg.png" alt="" width="80" height="80">
+            <h1 class="h3 mb-3 fw-normal">ACTUALIZACIÓN DE HORARIOS</h1>
+            <img class="mb-4" src="../assets/modificarHorario.png" alt="" width="80" height="80">
 
             <p>HORA DE INICIO <input type="time" name="eta"></p>
             <br>
@@ -39,7 +39,7 @@
 
             <div class="form-floating">
                 <input type="text" class="form-control" id="tablas" placeholder="Text">
-                <label for="floatingInput">Tablas de acceso permitido</label>
+                <label for="floatingInput">Tablas nuevas de acceso </label>
             </div>
 
             <div class="form-floating">
@@ -48,7 +48,7 @@
             </div>
             <br>
             
-            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="Schedule()">Asignar</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="Schedule()">Actualizar</button>
             <p class="mt-5 mb-3 text-muted">&copy;2022</p>
         </form>
     </main>
@@ -56,7 +56,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/cookies.js"></script>
     <script src="../js/admin.js"></script>
-    <script src="../js/horario.js"></script>
+    <script src="../js/Horarios/actualizarHorario.js"></script>
 
 </body>
 </html>
