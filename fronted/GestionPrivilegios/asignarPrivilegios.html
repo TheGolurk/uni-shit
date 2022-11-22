@@ -11,7 +11,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
     <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/asignarPrivilegios.css" rel="stylesheet">
+    <link href="../css/horario.css" rel="stylesheet">
 </head>
 
 <div class="b-example-divider "></div>
@@ -28,42 +28,11 @@
 
 
 <body class="text-center">
-    <main class="form-signin w-100 m-auto">
-        <form id="Schedule-form">
-
-            <h1 class="h3 mb-3 fw-normal">ASIGNACIÓN DE HORARIOS</h1>
-            <img class="mb-4" src="../assets/horarioReg.png" alt="" width="80" height="80">
-
-            <p>HORA DE INICIO <input type="time" name="eta"></p>
-            <br>
-            <p>HORA DE FINALIZACIÓN <input type="time" name="eta"></p>
-
-            <div class="form-floating">
-                <input type="text" class="form-control" id="tablas" placeholder="Text">
-                <label for="floatingInput">Tablas de acceso permitido</label>
-            </div>
-
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingType" placeholder="Text">
-                <label for="floatingInput">Tipo De Usuario</label>
-            </div>
-            <br>
-            
-            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="Schedule()">Asignar</button>
-            <p class="mt-5 mb-3 text-muted">&copy;2022</p>
-        </form>
-    </main>
-
-
-
-
-
-
 
     <main class="form-signin w-100 m-auto">
         <form id="UserPrivileges-form">
             <h1 class="h3 mb-3 fw-normal">ASIGNACIÓN DE PRIVILEGIOS</h1>
-            <img class="mb-4" src="../assets/assign.png" alt="" width="70" height="70">
+            <img class="mb-4" src="../assets/asignarPrivilegios.png" alt="" width="70" height="70">
 
 
             <div class="form-floating">
@@ -73,7 +42,7 @@
             <br>
             <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Text">
-                <label for="floatingInput">Tabla</label>
+                <label for="floatingInput">Tablas permitidas</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="UserPrivileges()">Asignar</button>
             <p class="mt-5 mb-3 text-muted">&copy;2022</p>
