@@ -18,22 +18,28 @@ func (s *Service) CreateAccess(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	pwd, err := hashAndSalt(user.Password)
+	_, err := s.db.Exec("")
+
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	_, err = s.db.Exec(`
-	INSERT INTO USUARIO( USERNAME, PASS, NOMBRE, APELLIDO, TIPO_ID)
-    	VALUES (?, ?, ?, ?, ?);
-		`,
-		user.Username,
-		pwd,
-		user.Nombre,
-		user.Apellido,
-		user.IdTipo,
+	return c.JSON(http.StatusOK, "created")
+}
+
+func (s *Service) DeleteAccess(c echo.Context) error {
+	var (
+		user models.User
 	)
+
+	if err := c.Bind(&user); err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	_, err := s.db.Exec("")
+
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
@@ -43,14 +49,25 @@ func (s *Service) CreateAccess(c echo.Context) error {
 
 }
 
-func (s *Service) DeleteAccess(c echo.Context) error {
-
-	return nil
-}
-
 func (s *Service) UpdateAccess(c echo.Context) error {
+	var (
+		user models.User
+	)
 
-	return nil
+	if err := c.Bind(&user); err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	_, err := s.db.Exec("")
+
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	return c.JSON(http.StatusOK, "created")
+
 }
 
 func (s *Service) GetAccess(c echo.Context) error {

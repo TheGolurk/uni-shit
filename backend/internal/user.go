@@ -174,26 +174,20 @@ func hashAndSalt(pwd string) (string, error) {
 }
 
 func (s *Service) GetUser(c echo.Context) error {
-	var (
-		user models.User
-	)
-
-	if err := c.Bind(&user); err != nil {
-		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
-	}
-
-	res, err := s.db.Exec("UPDATE USUARIO SET NOMBRE = ?, APELLIDO = ?, TIPO_ID = ? WHERE USERNAME = ?",
-		user.Nombre, user.Apellido, user.IdTipo, user.Username)
+	rows, err := s.db.Query("")
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	if count, err := res.RowsAffected(); count == 0 || err != nil {
-		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+	defer rows.Close()
+
+	for rows.Next() {
+		if err = rows.Scan(); err != nil {
+			log.Println(err)
+			return c.JSON(http.StatusInternalServerError, "")
+		}
 	}
 
-	return c.JSON(http.StatusOK, "modified successfully")
+	return c.JSON(http.StatusOK, nil)
 }
