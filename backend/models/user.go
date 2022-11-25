@@ -14,3 +14,24 @@ type UserAccess struct {
 	HoraInicio string `json:"hora_inicio,omitempty"`
 	HoraFinal  string `json:"hora_final,omitempty"`
 }
+
+type Cliente struct {
+	Nombre    string
+	Apellido  string
+	Direccion string
+	Estado    string
+}
+
+type Producto struct {
+	PesoProducto    float32
+	PrecioProduccto float32
+}
+
+type Venta struct {
+	IdUsuarioVenta string
+	IdPro          int
+	Total          float32
+	Iva            float32
+	FechaVenta     string
+	IdCli          int
+}
