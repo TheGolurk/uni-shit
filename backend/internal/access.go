@@ -10,15 +10,20 @@ import (
 
 func (s *Service) CreateAccess(c echo.Context) error {
 	var (
-		user models.User
+		access models.UserAccess
 	)
 
-	if err := c.Bind(&user); err != nil {
+	if err := c.Bind(&access); err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	_, err := s.db.Exec("")
+	_, err := s.db.Exec(Tipoacceso_create,
+		access.IDTipo,
+		access.Tablas,
+		access.HoraInicio,
+		access.HoraFinal,
+	)
 
 	if err != nil {
 		log.Println(err)
@@ -30,15 +35,15 @@ func (s *Service) CreateAccess(c echo.Context) error {
 
 func (s *Service) DeleteAccess(c echo.Context) error {
 	var (
-		user models.User
+		access models.UserAccess
 	)
 
-	if err := c.Bind(&user); err != nil {
+	if err := c.Bind(&access); err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	_, err := s.db.Exec("")
+	_, err := s.db.Exec(Tipoacceso_delete, access.IDTipo)
 
 	if err != nil {
 		log.Println(err)
