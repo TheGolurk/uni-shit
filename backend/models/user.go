@@ -16,6 +16,7 @@ type UserAccess struct {
 }
 
 type Cliente struct {
+	IdCliente int
 	Nombre    string
 	Apellido  string
 	Direccion string

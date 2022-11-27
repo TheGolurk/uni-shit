@@ -56,26 +56,55 @@ func (s *Service) DeleteAccess(c echo.Context) error {
 
 func (s *Service) UpdateAccess(c echo.Context) error {
 	var (
-		user models.User
+		access models.UserAccess
 	)
 
-	if err := c.Bind(&user); err != nil {
+	if err := c.Bind(&access); err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	_, err := s.db.Exec("")
+	_, err := s.db.Exec(Tipoacceso_update,
+		access.Tablas,
+		access.HoraInicio,
+		access.HoraFinal,
+		access.IDTipo,
+	)
 
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	return c.JSON(http.StatusOK, "created")
-
+	return c.JSON(http.StatusOK, "updated")
 }
 
 func (s *Service) GetAccess(c echo.Context) error {
+	var (
+		access    models.UserAccess
+		accessarr []models.UserAccess
+	)
 
-	return nil
+	rows, err := s.db.Query(Tipoacceso_select)
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		if err = rows.Scan(
+			&access.IDTipo,
+			&access.Tablas,
+			&access.HoraInicio,
+			&access.HoraFinal,
+		); err != nil {
+			log.Println(err)
+			return c.JSON(http.StatusInternalServerError, "")
+		}
+		accessarr = append(accessarr, access)
+	}
+
+	return c.JSON(http.StatusOK, accessarr)
 }

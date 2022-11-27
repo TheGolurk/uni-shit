@@ -5,7 +5,7 @@ var (
 	// TIPO_ACCESO
 	Tipoacceso_select = `SELECT * FROM TIPO_ACCESO`
 
-	Tipoacceso_update = `UPDATE TIPO_ACCESO SET ID_TIPO = ?,
+	Tipoacceso_update = `UPDATE TIPO_ACCESO SET 
 	TABLA= ?,
 	HORARIO_INICIO = ?,
 	HORARIO_FINAL = ?
@@ -27,7 +27,7 @@ var (
 	Cliente_create = `INSERT INTO CLIENTE( NOMBRE, APELLIDO, DIRECCION, ESTADO)
     VALUES(?, ?, ?,?);`
 
-	Cliente_delete = `DELETE FROM CLIENTE WHERE ID_CLIENTE = ?;`
+	Cliente_delete = `DELETE FROM CLIENTE WHERE NOMBRE = ?;`
 
 	Cliente_update = `UPDATE CLIENTE SET NOMBRE = ?,
 	APELLIDO = ?,
