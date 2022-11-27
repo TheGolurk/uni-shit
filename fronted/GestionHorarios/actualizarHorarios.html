@@ -33,9 +33,9 @@
             <h1 class="h3 mb-3 fw-normal">ACTUALIZACIÓN DE HORARIOS</h1>
             <img class="mb-4" src="../assets/modificarHorario.png" alt="" width="80" height="80">
 
-            <p>HORA DE INICIO <input type="time" name="eta"></p>
+            <p>HORA DE INICIO <input type="time" name="eta" id="StartTime"></p>
             <br>
-            <p>HORA DE FINALIZACIÓN <input type="time" name="eta"></p>
+            <p>HORA DE FINALIZACIÓN <input type="time" name="eta" id="FinalTime"></p>
 
             <div class="form-floating">
                 <input type="text" class="form-control" id="tablas" placeholder="Text">
@@ -43,12 +43,12 @@
             </div>
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingType" placeholder="Text">
+                <input type="text" class="form-control" id="UserType" placeholder="Text">
                 <label for="floatingInput">Tipo De Usuario</label>
             </div>
             <br>
             
-            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="Schedule()">Actualizar</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="ModifySchedule()">Actualizar</button>
             <p class="mt-5 mb-3 text-muted">&copy;2022</p>
         </form>
     </main>

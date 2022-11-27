@@ -37,28 +37,20 @@
             </div>
 
             <div class="row g-5">
-                <div class="form" text>
+                <div class="client-form" text>
                 
                     <form class="needs-validation " novalidate>
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">NOMBRE</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                <label for="firstName" class="form-label">ID CLIENTE</label>
+                                <input type="text" class="form-control" id="Idventa" placeholder="" value="" required>
                                 <div class="invalid-feedback">
-                                    Favor de ingresar nombre del cliente.
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label for="lastName" class="form-label">APELLIDO</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                                <div class="invalid-feedback">
-                                    Favor de ingresar apellido del cliente.
+                                    Favor de ingresar el id
                                 </div>
                             </div>
                         <br>
                         <br>
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">ELIMINAR</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit" onclick="DeleteClient()">ELIMINAR</button>
                         <br>
                         <br>
                         <br>
