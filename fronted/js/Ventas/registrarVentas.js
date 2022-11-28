@@ -6,7 +6,7 @@ async function RegisterSale() {
     let date = document.getElementById('fechaVenta').value;
     let idClient = document.getElementById('IdCliente').value;
 
-    const url = 'http://localhost:8070/venta/create';
+    const url = 'http://localhost:8070/accesohora/create';
     const body = {
         "id_usuario_venta": parseInt(idUser),
         "id_pro": parseInt(idProduct),

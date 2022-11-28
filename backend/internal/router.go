@@ -30,7 +30,7 @@ func SetRoutes(e *echo.Echo, db *sql.DB) {
 
 	// Venta
 	e.POST("/venta/create", service.CreateSell)
-	e.DELETE("/venta/delete", service.DeleteClient)
+	e.DELETE("/venta/delete", service.DeleteSell)
 	e.PUT("/venta/modify", service.UpdateSell)
 	e.GET("/venta/get", service.GetSell)
 

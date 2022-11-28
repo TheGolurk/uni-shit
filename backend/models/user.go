@@ -16,31 +16,31 @@ type UserAccess struct {
 }
 
 type Cliente struct {
-	IdCliente int    `json:"id_cliente"`
-	Nombre    string `json:"nombre"`
-	Apellido  string `json:"apellido"`
-	Direccion string `json:"direccion"`
-	Estado    string `json:"estado"`
+	IdCliente int    `json:"id_cliente,omitempty"`
+	Nombre    string `json:"nombre,omitempty"`
+	Apellido  string `json:"apellido,omitempty"`
+	Direccion string `json:"direccion,omitempty"`
+	Estado    string `json:"estado,omitempty"`
 }
 
 type Producto struct {
-	IdProducto      int     `json:"id_producto"`
-	PesoProducto    float32 `json:"peso_producto"`
-	PrecioProduccto float32 `json:"precio_produccto"`
+	IdProducto      int     `json:"id_producto,omitempty"`
+	PesoProducto    float32 `json:"peso_producto,omitempty"`
+	PrecioProduccto float32 `json:"precio_produccto,omitempty"`
 }
 
 type Venta struct {
-	IdVenta        int     `json:"id_venta"`
-	IdUsuarioVenta int     `json:"id_usuario_venta"`
-	IdPro          int     `json:"id_pro"`
-	Total          float32 `json:"total"`
-	Iva            float32 `json:"iva"`
-	FechaVenta     string  `json:"fecha_venta"`
-	IdCli          int     `json:"id_cli"`
+	IdVenta        int     `json:"id_venta,omitempty"`
+	IdUsuarioVenta int     `json:"id_usuario_venta,omitempty"`
+	IdPro          int     `json:"id_pro,omitempty"`
+	Total          float32 `json:"total,omitempty"`
+	Iva            float32 `json:"iva,omitempty"`
+	FechaVenta     string  `json:"fecha_venta,omitempty"`
+	IdCli          int     `json:"id_cli,omitempty"`
 }
 
 type Acceso struct {
-	ID      int    `json:"id"`
-	Id_tipo int    `json:"id_tipo"`
-	Tablas  string `json:"tablas"`
+	ID      int    `json:"id,omitempty"`
+	Id_tipo int    `json:"id_tipo,omitempty"`
+	Tablas  string `json:"tablas,omitempty"`
 }

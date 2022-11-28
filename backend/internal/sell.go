@@ -30,16 +30,14 @@ func (s *Service) CreateSell(c echo.Context) error {
 }
 
 func (s *Service) DeleteSell(c echo.Context) error {
-	var (
-		venta models.Venta
-	)
+	ID := c.QueryParam("id")
 
-	if err := c.Bind(&venta); err != nil {
-		log.Println(err)
+	if ID == "" {
+		log.Println("sin id ")
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	_, err := s.db.Exec(Venta_delete, venta.IdVenta)
+	_, err := s.db.Exec(Venta_delete, ID)
 
 	if err != nil {
 		log.Println(err)

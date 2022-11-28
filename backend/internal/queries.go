@@ -41,7 +41,7 @@ var (
 	Venta_create = `INSERT INTO VENTA(ID_UsuarioVenta, ID_PRO, TOTAL, IVA, FECHA_VENTA, ID_CLI)
     VALUES(?, ?, ?, ?, ?, ?);`
 
-	Venta_delete = `DELETE FROM VENTA WHERE ID_VENTA= ?;`
+	Venta_delete = `DELETE FROM VENTA WHERE ID_VENTA = ?;`
 
 	Venta_update = `UPDATE VENTA  SET ID_PRO = ?,
 	TOTAL = ?,
