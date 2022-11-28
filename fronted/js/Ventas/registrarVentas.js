@@ -6,15 +6,17 @@ async function RegisterSale() {
     let date = document.getElementById('fechaVenta').value;
     let idClient = document.getElementById('IdCliente').value;
 
-    const url = 'http://localhost:8070/venta/create?={}';
+    const url = 'http://localhost:8070/venta/create';
     const body = {
-        "IdUusarioVenta": idUser,
-        "IdPro": idProduct,
-        "Total": total,
-        "Iva": iva,
-        "FechaVenta": date,
-        "IdCli": idClient,
+        "id_usuario_venta": parseInt(idUser),
+        "id_pro": parseInt(idProduct),
+        "total": parseFloat(total),
+        "iva": parseFloat(iva),
+        "fecha_venta": date,
+        "id_cli": parseInt(idClient),
     };
+
+    console.log(body);
 
     try {
         const resp = await axios.post(url, body)
