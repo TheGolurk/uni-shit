@@ -31,7 +31,7 @@ type Producto struct {
 
 type Venta struct {
 	IdVenta        int     `json:"id_venta"`
-	IdUsuarioVenta string  `json:"id_usuario_venta"`
+	IdUsuarioVenta int     `json:"id_usuario_venta"`
 	IdPro          int     `json:"id_pro"`
 	Total          float32 `json:"total"`
 	Iva            float32 `json:"iva"`
