@@ -174,7 +174,11 @@ func hashAndSalt(pwd string) (string, error) {
 }
 
 func (s *Service) GetUser(c echo.Context) error {
-	rows, err := s.db.Query("")
+	var (
+		user  models.User
+		users []models.User
+	)
+	rows, err := s.db.Query("SELECT USERNAME, NOMBRE, APELLIDO, TIPO_ID FROM USUARIO;")
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
@@ -183,11 +187,12 @@ func (s *Service) GetUser(c echo.Context) error {
 	defer rows.Close()
 
 	for rows.Next() {
-		if err = rows.Scan(); err != nil {
+		if err = rows.Scan(&user.Username, &user.Nombre, &user.Apellido, &user.IdTipo); err != nil {
 			log.Println(err)
 			return c.JSON(http.StatusInternalServerError, "")
 		}
+		users = append(users, user)
 	}
 
-	return c.JSON(http.StatusOK, nil)
+	return c.JSON(http.StatusOK, users)
 }

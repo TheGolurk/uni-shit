@@ -1,34 +1,29 @@
 async function ViewSchedule() {
-    let startTime = document.getElementById('StartTime').value;
-    let finalTime = document.getElementById('FinalTime').value;
-    let tables = document.getElementById('tablas').value;
-    let typeUser = document.getElementById('UserType').value;
-
-
-    const url = 'http://localhost:8070/accesohora/modify';
-    const body = {
-        "HoraInicio": startTime,
-        "HoraFinal": finalTime,
-        "Tablas": tables,
-        "IDTipo": parseInt(typeUser),
-    };
+    const url = 'http://localhost:8070/accesohora/get';
 
     try {
-        const resp = await axios.get(url, body);
-        
-        alert('Creado correctamente');
-        
+        const resp = await axios.get(url)
+
+        const table = document.getElementById("tabla-datos");
+        resp.data.forEach(item => {
+            let row = table.insertRow();
+            let date = row.insertCell(0);
+            date.innerHTML = item.id_tipo;
+
+            let name = row.insertCell(1);
+            name.innerHTML = item.tablas;
+
+            let apellido = row.insertCell(2);
+            apellido.innerHTML = item.hora_inicio;
+
+            let tipo = row.insertCell(3);
+            tipo.innerHTML = item.hora_final;
+        });
+
     } catch (err) {
         console.log(err);
-        alert("No se pudo crear");
     }
 
 }
 
-
-var form = document.getElementById("Schedule-form");
-function handleForm(event) {
-    event.preventDefault();
-}
-
-form.addEventListener('submit', handleForm);
+ViewSchedule();

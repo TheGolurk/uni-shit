@@ -38,3 +38,9 @@ type Venta struct {
 	FechaVenta     string  `json:"fecha_venta"`
 	IdCli          int     `json:"id_cli"`
 }
+
+type Acceso struct {
+	ID      int    `json:"id"`
+	Id_tipo int    `json:"id_tipo"`
+	Tablas  string `json:"tablas"`
+}

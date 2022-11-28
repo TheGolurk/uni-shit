@@ -2,15 +2,14 @@ async function CreateSchedule() {
     let startTime = document.getElementById('StartTime').value;
     let finalTime = document.getElementById('FinalTime').value;
     let tables = document.getElementById('tablas').value;
-    let typeUser = document.getElementById('UserType').value;
-
+    let typeUser = document.getElementById('tipo').value;
 
     const url = 'http://localhost:8070/accesohora/create';
     const body = {
-        "HoraInicio": startTime,
-        "HoraFinal": finalTime,
-        "Tablas": tables,
-        "IDTipo": parseInt(typeUser),
+        "hora_inicio": startTime,
+        "hora_final": finalTime,
+        "tablas": tables,
+        "id_tipo": parseInt(typeUser),
     };
 
     try {
