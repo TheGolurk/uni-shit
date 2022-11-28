@@ -27,7 +27,7 @@ var (
 	Cliente_create = `INSERT INTO CLIENTE( NOMBRE, APELLIDO, DIRECCION, ESTADO)
     VALUES(?, ?, ?,?);`
 
-	Cliente_delete = `DELETE FROM CLIENTE WHERE NOMBRE = ?;`
+	Cliente_delete = `DELETE FROM CLIENTE WHERE ID_CLIENTE = ?;`
 
 	Cliente_update = `UPDATE CLIENTE SET NOMBRE = ?,
 	APELLIDO = ?,

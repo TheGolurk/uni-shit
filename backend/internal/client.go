@@ -35,16 +35,13 @@ func (s *Service) CreateClient(c echo.Context) error {
 }
 
 func (s *Service) DeleteClient(c echo.Context) error {
-	var (
-		client models.Cliente
-	)
-
-	if err := c.Bind(&client); err != nil {
-		log.Println(err)
+	id := c.QueryParam("id")
+	if id == "" {
+		log.Println("id no viene")
 		return c.JSON(http.StatusInternalServerError, "")
 	}
 
-	_, err := s.db.Exec(Cliente_delete, client.Nombre)
+	_, err := s.db.Exec(Cliente_delete, id)
 
 	if err != nil {
 		log.Println(err)
@@ -82,31 +79,31 @@ func (s *Service) UpdateClient(c echo.Context) error {
 }
 
 func (s *Service) GetClient(c echo.Context) error {
-    var (
-        client    models.Cliente
-        clientarr []models.Cliente
-    )
+	var (
+		client    models.Cliente
+		clientarr []models.Cliente
+	)
 
-    rows, err := s.db.Query(Cliente_select)
-    if err != nil {
-        log.Println(err)
-        return c.JSON(http.StatusInternalServerError, "")
-    }
+	rows, err := s.db.Query(Cliente_select)
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
 
-    defer rows.Close()
+	defer rows.Close()
 
-    for rows.Next() {
-        if err = rows.Scan(
-            &client.Nombre,
-            &client.Apellido,
-            &client.Direccion,
-            &client.Estado,
-            ); err != nil {
-            log.Println(err)
-            return c.JSON(http.StatusInternalServerError, "")
-            }
-            clientarr = append(clientarr, client)
-    }
+	for rows.Next() {
+		if err = rows.Scan(
+			&client.Nombre,
+			&client.Apellido,
+			&client.Direccion,
+			&client.Estado,
+		); err != nil {
+			log.Println(err)
+			return c.JSON(http.StatusInternalServerError, "")
+		}
+		clientarr = append(clientarr, client)
+	}
 
-    return c.JSON(http.StatusOK, clientarr)
+	return c.JSON(http.StatusOK, clientarr)
 }

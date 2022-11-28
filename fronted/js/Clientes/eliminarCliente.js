@@ -1,10 +1,7 @@
 async function DeleteClient() {
-    let name = document.getElementById('firstName').value;
-    let lastName = document.getElementById('lastName').value;
-    let actualAddress = document.getElementById('address').value;
-    let  state = document.getElementById('state').value;
+    let id = document.getElementById('Idventa').value;
 
-    const url = `http://localhost:8070/cliente/delete?=${name}`;
+    const url = `http://localhost:8070/cliente/delete?id=${id}`;
 
 
     try {
