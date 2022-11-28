@@ -24,6 +24,7 @@ type Cliente struct {
 }
 
 type Producto struct {
+	IdProducto      int
 	PesoProducto    float32
 	PrecioProduccto float32
 }
