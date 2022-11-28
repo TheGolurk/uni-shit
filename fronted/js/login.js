@@ -14,6 +14,8 @@ async function ExecuteLogin() {
     try {
         const resp = await axios.post(url, body);
 
+        console.log(resp.data.id_tipo);
+
         let urlr = "login.html";
         if (resp.data.id_tipo == 1) {
             urlr = 'administrador.html';

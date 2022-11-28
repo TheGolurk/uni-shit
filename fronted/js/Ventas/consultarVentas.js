@@ -1,37 +1,35 @@
 async function ViewSale() {
-    let idUser = document.getElementById('Idusuario').value;
-    let idProduct = document.getElementById('IdProducto').value;
-    let total = document.getElementById('Total').value;
-    let iva = document.getElementById('Iva').value;
-    let date = document.getElementById('fechaVenta').value;
-    let idClient = document.getElementById('IdCliente').value;
-
     const url = 'http://localhost:8070/venta/get';
-    const body = {
-        "IdUusarioVenta": idUser,
-        "IdPro": idProduct,
-        "Total": total,
-        "Iva": iva,
-        "FechaVenta": date,
-        "IdCli": idClient,
-    };
 
     try {
-        const resp = await axios.get(url, body)
+        const resp = await axios.get(url)
+        console.log(resp);
 
-        alert('Creado con exito');
+        const table = document.getElementById("tabla-datos");
+        resp.data.forEach(item => {
+            let row = table.insertRow();
+            let idUsuario = row.insertCell(0);
+            idUsuario.innerHTML = item.id_usuario_venta;
+
+            let idPro = row.insertCell(1);
+            idPro.innerHTML = item.id_pro;
+
+            let total = row.insertCell(2);
+            total.innerHTML = item.total;
+
+            let iva = row.insertCell(3);
+            iva.innerHTML = item.iva;
+
+            let fecha = row.insertCell(4);
+            fecha.innerHTML = item.fecha_venta;
+
+            let cli = row.insertCell(5);
+            cli.innerHTML = item.id_cli;
+        });
 
     } catch (err) {
         console.log(err);
-        alert('No se pudo crear, valida la informacion');
     }
 
 }
-
-
-var form = document.getElementById("sale-form");
-function handleForm(event) {
-    event.preventDefault();
-}
-
-form.addEventListener('submit', handleForm);
+ViewSale();
