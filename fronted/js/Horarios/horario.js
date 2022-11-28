@@ -1,16 +1,16 @@
-async function Schedule() {
-    let startTime = document.getElementById('floatingStartTime').value;
-    let finalTime = document.getElementById('floatingFinalTime').value;
+async function CreateSchedule() {
+    let startTime = document.getElementById('StartTime').value;
+    let finalTime = document.getElementById('FinalTime').value;
     let tables = document.getElementById('tablas').value;
-    let typeUser = document.getElementById('floatingType').value;
+    let typeUser = document.getElementById('UserType').value;
 
 
-    const url = 'http://localhost:8070/user/accesohora';
+    const url = 'http://localhost:8070/accesohora/create';
     const body = {
-        "hora_inicio": startTime,
-        "hora_final": finalTime,
-        "id_tipo": parseInt(typeUser),
-        "tablas": tables
+        "HoraInicio": startTime,
+        "HoraFinal": finalTime,
+        "Tablas": tables,
+        "IDTipo": parseInt(typeUser),
     };
 
     try {

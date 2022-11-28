@@ -1,4 +1,4 @@
-async function RegisterClient() {
+async function ViewClient() {
     let name = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
     let actualAddress = document.getElementById('address').value;

@@ -4,22 +4,17 @@ async function DeleteClient() {
     let actualAddress = document.getElementById('address').value;
     let  state = document.getElementById('state').value;
 
-    const url = 'http://localhost:8070/cliente/delete';
-    const body = {
-        "Nombre": name,
-        "Apellido": lastName,
-        "Direccion": actualAddress,
-        "Estado": state,
-    };
+    const url = `http://localhost:8070/cliente/delete?=${name}`;
+
 
     try {
-        const resp = await axios.delete(url, body)
+        const resp = await axios.delete(url)
         
-        alert('Creado con exito');
+        alert('Se eliminó correctamente');
 
     } catch (err) {
         console.log(err);
-        alert('No se pudo crear, valida la informacion');
+        alert('No se pudo eliminar');
     }
 
 }

@@ -1,8 +1,9 @@
 async function AssignPrivileges() {
-    let table = document.getElementById('floatingInput').value;
+    
     let typeUser = document.getElementById('floatingType').value;
+    let table = document.getElementById('floatingInput').value;
 
-    const url = 'http://localhost:8080/user';
+    const url = 'http://localhost:8080/accesohora/create';
     const body = {
         "id_tipo": typeUser,
         "tabla": table
