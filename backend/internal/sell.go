@@ -1,19 +1,72 @@
 package internal
 
-import "github.com/labstack/echo/v4"
+import (
+	"log"
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+	"upemor.com/shit-project/models"
+)
 
 func (s *Service) CreateSell(c echo.Context) error {
-	return nil
+	var (
+		sell models.Venta
+	)
+
+	if err := c.Bind(&sell); err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	_, err := s.db.Exec(Venta_create, sell.IdUsuarioVenta, sell.IdPro, sell.Total,
+		sell.Iva, sell.FechaVenta, sell.IdCli)
+
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	return c.JSON(http.StatusOK, "created")
 }
 
 func (s *Service) DeleteSell(c echo.Context) error {
+	var (
+		venta models.Venta
+	)
 
-	return nil
+	if err := c.Bind(&venta); err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	_, err := s.db.Exec(Venta_delete, venta.IdVenta)
+
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	return c.JSON(http.StatusOK, "deleted")
 }
 
 func (s *Service) UpdateSell(c echo.Context) error {
+	var (
+		venta models.Venta
+	)
 
-	return nil
+	if err := c.Bind(&venta); err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	_, err := s.db.Exec(Venta_update)
+
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	return c.JSON(http.StatusOK, "updated")
 }
 
 func (s *Service) GetSell(c echo.Context) error {

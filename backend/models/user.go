@@ -16,24 +16,25 @@ type UserAccess struct {
 }
 
 type Cliente struct {
-	IdCliente int
-	Nombre    string
-	Apellido  string
-	Direccion string
-	Estado    string
+	IdCliente int    `json:"id_cliente"`
+	Nombre    string `json:"nombre"`
+	Apellido  string `json:"apellido"`
+	Direccion string `json:"direccion"`
+	Estado    string `json:"estado"`
 }
 
 type Producto struct {
-	IdProducto      int
-	PesoProducto    float32
-	PrecioProduccto float32
+	IdProducto      int     `json:"id_producto"`
+	PesoProducto    float32 `json:"peso_producto"`
+	PrecioProduccto float32 `json:"precio_produccto"`
 }
 
 type Venta struct {
-	IdUsuarioVenta string
-	IdPro          int
-	Total          float32
-	Iva            float32
-	FechaVenta     string
-	IdCli          int
+	IdVenta        int     `json:"id_venta"`
+	IdUsuarioVenta string  `json:"id_usuario_venta"`
+	IdPro          int     `json:"id_pro"`
+	Total          float32 `json:"total"`
+	Iva            float32 `json:"iva"`
+	FechaVenta     string  `json:"fecha_venta"`
+	IdCli          int     `json:"id_cli"`
 }
