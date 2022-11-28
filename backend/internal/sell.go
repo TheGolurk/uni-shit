@@ -70,6 +70,33 @@ func (s *Service) UpdateSell(c echo.Context) error {
 }
 
 func (s *Service) GetSell(c echo.Context) error {
+	var (
+		venta  models.Venta
+		ventas []models.Venta
+	)
 
-	return nil
+	rows, err := s.db.Query(Venta_select)
+	if err != nil {
+		log.Println(err)
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		if err = rows.Scan(
+			&venta.IdUsuarioVenta,
+			&venta.IdPro,
+			&venta.Total,
+			&venta.Iva,
+			&venta.FechaVenta,
+			&venta.IdCli,
+		); err != nil {
+			log.Println(err)
+			return c.JSON(http.StatusInternalServerError, "")
+		}
+		ventas = append(ventas, venta)
+	}
+
+	return c.JSON(http.StatusOK, ventas)
 }
