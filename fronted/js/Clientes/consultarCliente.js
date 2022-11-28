@@ -1,33 +1,30 @@
-async function ViewClient() {
-    let name = document.getElementById('firstName').value;
-    let lastName = document.getElementById('lastName').value;
-    let actualAddress = document.getElementById('address').value;
-    let  state = document.getElementById('state').value;
-
+async function GetClient() {
     const url = 'http://localhost:8070/cliente/get';
-    const body = {
-        "Nombre": name,
-        "Apellido": lastName,
-        "Direccion": actualAddress,
-        "Estado": state,
-    };
 
     try {
-        const resp = await axios.get(url, body)
-        
-        alert('Creado con exito');
+        const resp = await axios.get(url)
+        console.log(resp);
+
+        const table = document.getElementById("tabla-datos");
+        resp.data.forEach(item => {
+            let row = table.insertRow();
+            let nombre = row.insertCell(0);
+            nombre.innerHTML = item.nombre;
+
+            let apellido = row.insertCell(1);
+            apellido.innerHTML = item.apellido;
+
+            let dir = row.insertCell(2);
+            dir.innerHTML = item.direccion;
+
+            let estado = row.insertCell(3);
+            estado.innerHTML = item.estado;
+
+        });
 
     } catch (err) {
         console.log(err);
-        alert('No se pudo crear, valida la informacion');
     }
 
 }
-
-
-var form = document.getElementById("client-form");
-function handleForm(event) {
-    event.preventDefault();
-}
-
-form.addEventListener('submit', handleForm);
+GetClient();
