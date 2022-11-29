@@ -1,27 +1,30 @@
-async function ViewPrivileges() {
-    
-    let typeUser = document.getElementById('floatingType').value;
-    let table = document.getElementById('floatingInput').value;
-
-    const url = 'http://localhost:8080/accesohora/get';
-    const body = {
-        "id_tipo": typeUser,
-        "tabla": table
-    };
+async function GetPrivileges() {
+    const url = 'http://localhost:8070/accesohora/get';
 
     try {
-        const resp = await axios.get(url, body)
-        console.log(resp);
+        const resp = await axios.get(url)
+
+        const table = document.getElementById("tabla-datos");
+        resp.data.forEach(item => {
+
+            let row = table.insertRow();
+            let idtipo = row.insertCell(0);
+            idtipo.innerHTML = item.id_tipo;
+
+            let tables = row.insertCell(1);
+            tables.innerHTML = item.tablas;
+
+            let apellido = row.insertCell(2);
+            apellido.innerHTML = item.apellido;
+
+            let tipo = row.insertCell(3);
+            tipo.innerHTML = item.id_tipo;
+        });
+
     } catch (err) {
         console.log(err);
     }
 
 }
 
-var form = document.getElementById("UserPrivileges-form");
-function handleForm(event) {
-    event.preventDefault();
-}
-
-
-form.addEventListener('submit', handleForm);
+GetPrivileges();
