@@ -1,10 +1,12 @@
 async function AssignPrivileges() {
-    
-    let typeUser = document.getElementById('floatingType').value;
+
+    let idAccess = document.getElementById('floatingType1').value;
+    let typeUser = document.getElementById('floatingType2').value;
     let table = document.getElementById('floatingInput').value;
 
     const url = 'http://localhost:8080/accesohora/create';
     const body = {
+        "id": idAccess,
         "id_tipo": typeUser,
         "tabla": table
     };
@@ -18,7 +20,7 @@ async function AssignPrivileges() {
 
 }
 
-var form = document.getElementById("AssignPrivileges-form");
+var form = document.getElementById("UserPrivileges-form");
 function handleForm(event) {
     event.preventDefault();
 }

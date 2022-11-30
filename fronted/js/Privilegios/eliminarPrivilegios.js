@@ -1,12 +1,11 @@
 async function DeletePrivileges() {
     
-    let typeUser = document.getElementById('floatingType').value;
-    let table = document.getElementById('floatingInput').value;
+    let idAccess = document.getElementById('floatingType1').value;
 
-    const url = `http://localhost:8080/accesohora/delete?=${f};`;
+
+    const url = `http://localhost:8080/accesohora/delete?=${idAccess};`;
     const body = {
-        "id_tipo": typeUser,
-        "tabla": table
+        "id": idAccess,
     };
 
     try {
