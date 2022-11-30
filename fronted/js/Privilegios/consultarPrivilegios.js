@@ -8,17 +8,16 @@ async function GetPrivileges() {
         resp.data.forEach(item => {
 
             let row = table.insertRow();
-            let idtipo = row.insertCell(0);
-            idtipo.innerHTML = item.id_tipo;
+            let id = row.insertCell(0);
+            id.innerHTML = item.id;
 
-            let tables = row.insertCell(1);
-            tables.innerHTML = item.tablas;
 
-            let apellido = row.insertCell(2);
-            apellido.innerHTML = item.apellido;
-
-            let tipo = row.insertCell(3);
+            let tipo = row.insertCell(1);
             tipo.innerHTML = item.id_tipo;
+
+
+            let tables = row.insertCell(2);
+            tables.innerHTML = item.tablas;
         });
 
     } catch (err) {
