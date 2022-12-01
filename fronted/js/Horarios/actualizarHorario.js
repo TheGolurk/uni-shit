@@ -1,7 +1,6 @@
 async function CreateSchedule() {
     let startTime = document.getElementById('StartTime').value;
     let finalTime = document.getElementById('FinalTime').value;
-    let tables = document.getElementById('tablas').value;
     let typeUser = document.getElementById('UserType').value;
 
 
@@ -9,7 +8,6 @@ async function CreateSchedule() {
     const body = {
         "HoraInicio": startTime,
         "HoraFinal": finalTime,
-        "Tablas": tables,
         "IDTipo": parseInt(typeUser),
     };
 

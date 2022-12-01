@@ -1,11 +1,10 @@
 async function DeleteSchedule() {
-    let startTime = document.getElementById('StartTime').value;
-    let finalTime = document.getElementById('FinalTime').value;
-    let tables = document.getElementById('tablas').value;
+
+    
     let typeUser = document.getElementById('UserType').value;
 
 
-    const url = `http://localhost:8070/accesohora/delete?=${f};`;
+    const url = `http://localhost:8070/accesohora/delete?=${typeUser};`;
     try {
         const resp = await axios.delete(url)
         

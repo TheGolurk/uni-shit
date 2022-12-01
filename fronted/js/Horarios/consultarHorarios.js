@@ -10,13 +10,11 @@ async function ViewSchedule() {
             let date = row.insertCell(0);
             date.innerHTML = item.id_tipo;
 
-            let name = row.insertCell(1);
-            name.innerHTML = item.tablas;
 
-            let apellido = row.insertCell(2);
+            let apellido = row.insertCell(1);
             apellido.innerHTML = item.hora_inicio;
 
-            let tipo = row.insertCell(3);
+            let tipo = row.insertCell(2);
             tipo.innerHTML = item.hora_final;
         });
 
