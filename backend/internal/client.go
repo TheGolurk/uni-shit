@@ -15,7 +15,7 @@ func (s *Service) CreateClient(c echo.Context) error {
 
 	if err := c.Bind(&client); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(
@@ -28,7 +28,7 @@ func (s *Service) CreateClient(c echo.Context) error {
 
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "created")
@@ -38,14 +38,14 @@ func (s *Service) DeleteClient(c echo.Context) error {
 	id := c.QueryParam("id")
 	if id == "" {
 		log.Println("id no viene")
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(Cliente_delete, id)
 
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "deleted")
@@ -58,7 +58,7 @@ func (s *Service) UpdateClient(c echo.Context) error {
 
 	if err := c.Bind(&client); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(Cliente_update,
@@ -71,7 +71,7 @@ func (s *Service) UpdateClient(c echo.Context) error {
 
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "updated")

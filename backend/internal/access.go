@@ -15,7 +15,7 @@ func (s *Service) CreateAccess(c echo.Context) error {
 
 	if err := c.Bind(&access); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(Tipoacceso_create,
@@ -27,7 +27,7 @@ func (s *Service) CreateAccess(c echo.Context) error {
 
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "created")
@@ -40,14 +40,14 @@ func (s *Service) DeleteAccess(c echo.Context) error {
 
 	if err := c.Bind(&access); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(Tipoacceso_delete, access.IDTipo)
 
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "created")
@@ -61,7 +61,7 @@ func (s *Service) UpdateAccess(c echo.Context) error {
 
 	if err := c.Bind(&access); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(Tipoacceso_update,
@@ -73,7 +73,7 @@ func (s *Service) UpdateAccess(c echo.Context) error {
 
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "updated")
@@ -88,7 +88,7 @@ func (s *Service) GetAccess(c echo.Context) error {
 	rows, err := s.db.Query(Tipoacceso_select)
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	defer rows.Close()

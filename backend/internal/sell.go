@@ -15,7 +15,7 @@ func (s *Service) CreateSell(c echo.Context) error {
 
 	if err := c.Bind(&sell); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(Venta_create, sell.IdUsuarioVenta, sell.IdPro, sell.Total,
@@ -23,7 +23,7 @@ func (s *Service) CreateSell(c echo.Context) error {
 
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "created")
@@ -34,14 +34,14 @@ func (s *Service) DeleteSell(c echo.Context) error {
 
 	if ID == "" {
 		log.Println("sin id ")
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(Venta_delete, ID)
 
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "deleted")
@@ -54,7 +54,7 @@ func (s *Service) UpdateSell(c echo.Context) error {
 
 	if err := c.Bind(&venta); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	_, err := s.db.Exec(Venta_update)

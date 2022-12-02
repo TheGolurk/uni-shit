@@ -58,12 +58,32 @@ func (s *Service) Login(c echo.Context) error {
 
 func (s *Service) CreateUser(c echo.Context) error {
 	var (
-		user models.User
+		user         models.User
+		prevUsername string
 	)
 
 	if err := c.Bind(&user); err != nil {
 		log.Println(err)
+		return c.JSON(http.StatusBadRequest, "informacion erronea")
+	}
+
+	rows, err := s.db.Query("SELECT USERNAME FROM USUARIO WHERE USERNAME = ?", user.Username)
+	if err != nil {
+		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		if err = rows.Scan(&prevUsername); err != nil {
+			log.Println(err)
+			return c.JSON(http.StatusInternalServerError, "")
+		}
+	}
+
+	if prevUsername == user.Username {
+		return c.JSON(http.StatusConflict, "duplicado")
 	}
 
 	pwd, err := hashAndSalt(user.Password)
@@ -84,7 +104,7 @@ func (s *Service) CreateUser(c echo.Context) error {
 	)
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	return c.JSON(http.StatusOK, "created")
@@ -95,7 +115,7 @@ func (s *Service) CreateUserAccess(c echo.Context) error {
 
 	if err := c.Bind(&useraccess); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "informacion erronea")
 	}
 
 	res, err := s.db.Exec(`
@@ -104,7 +124,7 @@ func (s *Service) CreateUserAccess(c echo.Context) error {
 		useraccess.IDTipo, useraccess.Tablas, useraccess.HoraInicio, useraccess.HoraFinal)
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "not created")
+		return c.JSON(http.StatusBadRequest, "not created")
 	}
 
 	if num, err := res.RowsAffected(); err != nil || num < 1 {
@@ -126,7 +146,7 @@ func (s *Service) DeleteUser(c echo.Context) error {
 	res, err := s.db.Exec("DELETE FROM USUARIO WHERE USERNAME= ?", nombreusuario)
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "no deleted")
+		return c.JSON(http.StatusBadRequest, "no deleted")
 	}
 
 	if num, err := res.RowsAffected(); err != nil || num < 1 {
@@ -144,14 +164,14 @@ func (s *Service) ModifyUser(c echo.Context) error {
 
 	if err := c.Bind(&user); err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	res, err := s.db.Exec("UPDATE USUARIO SET NOMBRE = ?, APELLIDO = ?, TIPO_ID = ? WHERE USERNAME = ?",
 		user.Nombre, user.Apellido, user.IdTipo, user.Username)
 	if err != nil {
 		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "")
+		return c.JSON(http.StatusBadRequest, "")
 	}
 
 	if count, err := res.RowsAffected(); count == 0 || err != nil {
