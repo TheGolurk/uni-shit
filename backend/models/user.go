@@ -8,6 +8,11 @@ type User struct {
 	IdTipo   int    `json:"id_tipo,omitempty"`
 }
 
+type TYpeUser struct {
+	ID          int    `json:"id,omitempty"`
+	TipoUsuario string `json:"tipo_usuario,omitempty"`
+}
+
 type UserAccess struct {
 	IDTipo     int    `json:"id_tipo,omitempty"`
 	Tablas     string `json:"tablas,omitempty"`
