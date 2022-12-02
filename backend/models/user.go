@@ -45,7 +45,7 @@ type Venta struct {
 }
 
 type Acceso struct {
-	ID      int    `json:"id,omitempty"`
-	Id_tipo int    `json:"id_tipo,omitempty"`
-	Tablas  string `json:"tablas,omitempty"`
+	ID     int    `json:"id,omitempty"`
+	IdTipo int    `json:"id_tipo,omitempty"`
+	Tablas string `json:"tablas,omitempty"`
 }
