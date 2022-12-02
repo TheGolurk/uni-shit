@@ -3,7 +3,7 @@ async function UpdateTypeUser() {
     let id = document.getElementById('floatingID').value;
 
 
-    const url = 'http://localhost:8070/';
+    const url = `http://localhost:8070/typeuser/delete?=${id};`;
     const body = {
 
         "id":id,

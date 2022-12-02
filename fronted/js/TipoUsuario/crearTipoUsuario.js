@@ -2,7 +2,7 @@ async function CreateTypeUser() {
 
     let type = document.getElementById('floatingType').value;
 
-    const url = 'http://localhost:8070/';
+    const url = 'http://localhost:8070/typeuser/create';
     const body = {
 
         "tipo_usuario": type,

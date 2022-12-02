@@ -23,7 +23,7 @@ func SetRoutes(e *echo.Echo, db *sql.DB) {
 	e.POST("/login", service.Login)
 
 	//TypeUser
-	e.POST("/create/typeuser", service.CreateTypeUser)
+	e.POST("/typeuser/create", service.CreateTypeUser)
 	e.DELETE("/typeuser/delete", service.DeleteTypeUser)
 	e.PUT("/typeuser/modify", service.ModifyTypeUser)
 	e.GET("/typeuser/get", service.GetTypeUser)

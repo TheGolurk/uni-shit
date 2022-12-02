@@ -4,7 +4,7 @@ async function UpdateTypeUser() {
     let type = document.getElementById('floatingType').value;
 
 
-    const url = 'http://localhost:8070/';
+    const url = 'http://localhost:8070/typeuser/modify';
     const body = {
 
         "id":id,
