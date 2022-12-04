@@ -110,32 +110,6 @@ func (s *Service) CreateUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, "created")
 }
 
-func (s *Service) CreateUserAccess(c echo.Context) error {
-	var useraccess models.UserAccess
-
-	if err := c.Bind(&useraccess); err != nil {
-		log.Println(err)
-		return c.JSON(http.StatusBadRequest, "informacion erronea")
-	}
-
-	res, err := s.db.Exec(`
-	INSERT INTO TIPO_ACCESO(ID_TIPO	, TABLA, HORARIO_INICIO, HORARIO_FINAL)
-    VALUES (?, ?, ?, ?)`,
-		useraccess.IDTipo, useraccess.Tablas, useraccess.HoraInicio, useraccess.HoraFinal)
-	if err != nil {
-		log.Println(err)
-		return c.JSON(http.StatusBadRequest, "not created")
-	}
-
-	if num, err := res.RowsAffected(); err != nil || num < 1 {
-		log.Println(err)
-		return c.JSON(http.StatusInternalServerError, "not created")
-	}
-
-	return c.JSON(http.StatusOK, "Created successfully")
-
-}
-
 func (s *Service) DeleteUser(c echo.Context) error {
 	nombreusuario := c.QueryParam(("username"))
 	if nombreusuario == "" {

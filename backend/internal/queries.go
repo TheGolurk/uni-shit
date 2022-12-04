@@ -6,7 +6,6 @@ var (
 	Tipoacceso_select = `SELECT * FROM TIPO_ACCESO`
 
 	Tipoacceso_update = `UPDATE TIPO_ACCESO SET 
-	TABLA= ?,
 	HORARIO_INICIO = ?,
 	HORARIO_FINAL = ?
 	WHERE ID_TIPO = ?;`
@@ -14,8 +13,8 @@ var (
 	Tipoacceso_delete = `DELETE FROM TIPO_ACCESO WHERE ID_TIPO = ?;`
 
 	Tipoacceso_create = `
-	INSERT INTO TIPO_ACCESO(ID_TIPO, TABLA, HORARIO_INICIO, HORARIO_FINAL)
-    VALUES(?, ?, ?, ?);
+	INSERT INTO TIPO_ACCESO(ID_TIPO HORARIO_INICIO, HORARIO_FINAL)
+    VALUES(?, ?, ?);
 	`
 
 	//USUARIO

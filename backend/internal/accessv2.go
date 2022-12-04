@@ -8,9 +8,9 @@ import (
 	"upemor.com/shit-project/models"
 )
 
-func (s *Service) CreateAccess(c echo.Context) error {
+func (s *Service) CreateAccessV2(c echo.Context) error {
 	var (
-		access models.UserAccess
+		access models.Acceso
 	)
 
 	if err := c.Bind(&access); err != nil {
@@ -18,12 +18,7 @@ func (s *Service) CreateAccess(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "")
 	}
 
-	_, err := s.db.Exec(Tipoacceso_create,
-		access.IDTipo,
-		access.HoraInicio,
-		access.HoraFinal,
-	)
-
+	_, err := s.db.Exec(Acceso_create, access.IdTipo, access.Tablas)
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusBadRequest, "")
@@ -32,9 +27,9 @@ func (s *Service) CreateAccess(c echo.Context) error {
 	return c.JSON(http.StatusOK, "created")
 }
 
-func (s *Service) DeleteAccess(c echo.Context) error {
+func (s *Service) DeleteAccessV2(c echo.Context) error {
 	var (
-		access models.UserAccess
+		access models.Acceso
 	)
 
 	if err := c.Bind(&access); err != nil {
@@ -42,7 +37,7 @@ func (s *Service) DeleteAccess(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "")
 	}
 
-	_, err := s.db.Exec(Tipoacceso_delete, access.IDTipo)
+	_, err := s.db.Exec(Acceso_delete, access.ID)
 
 	if err != nil {
 		log.Println(err)
@@ -53,9 +48,9 @@ func (s *Service) DeleteAccess(c echo.Context) error {
 
 }
 
-func (s *Service) UpdateAccess(c echo.Context) error {
+func (s *Service) UpdateAccessV2(c echo.Context) error {
 	var (
-		access models.UserAccess
+		access models.Acceso
 	)
 
 	if err := c.Bind(&access); err != nil {
@@ -63,12 +58,7 @@ func (s *Service) UpdateAccess(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "")
 	}
 
-	_, err := s.db.Exec(Tipoacceso_update,
-		access.HoraInicio,
-		access.HoraFinal,
-		access.IDTipo,
-	)
-
+	_, err := s.db.Exec(Acceso_update, access.IdTipo, access.Tablas, access.ID)
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusBadRequest, "")
@@ -77,13 +67,13 @@ func (s *Service) UpdateAccess(c echo.Context) error {
 	return c.JSON(http.StatusOK, "updated")
 }
 
-func (s *Service) GetAccess(c echo.Context) error {
+func (s *Service) GetAccessV2(c echo.Context) error {
 	var (
-		access    models.UserAccess
-		accessarr []models.UserAccess
+		access    models.Acceso
+		accessarr []models.Acceso
 	)
 
-	rows, err := s.db.Query(Tipoacceso_select)
+	rows, err := s.db.Query(Acceso_get)
 	if err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusBadRequest, "")
@@ -93,9 +83,9 @@ func (s *Service) GetAccess(c echo.Context) error {
 
 	for rows.Next() {
 		if err = rows.Scan(
-			&access.IDTipo,
-			&access.HoraInicio,
-			&access.HoraFinal,
+			&access.ID,
+			&access.IdTipo,
+			&access.Tablas,
 		); err != nil {
 			log.Println(err)
 			return c.JSON(http.StatusInternalServerError, "")

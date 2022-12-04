@@ -34,6 +34,12 @@ func SetRoutes(e *echo.Echo, db *sql.DB) {
 	e.PUT("/accesohora/modify", service.UpdateAccess)
 	e.GET("/accesohora/get", service.GetAccess)
 
+	// Acess
+	e.POST("/acces/create", service.CreateAccessV2)
+	e.DELETE("/acces/delete", service.DeleteAccessV2)
+	e.PUT("/acces/modify", service.UpdateAccessV2)
+	e.GET("/acces/get", service.GetAccessV2)
+
 	// Venta
 	e.POST("/venta/create", service.CreateSell)
 	e.DELETE("/venta/delete", service.DeleteSell)
