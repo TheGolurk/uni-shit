@@ -58,3 +58,24 @@ func (s *Service) Reportv1(c echo.Context) error {
 		Acceso:      acceso,
 	})
 }
+
+func (s *Service) Reportv2(c echo.Context) error {
+	var (
+		total float64
+	)
+
+	rows, err := s.db.Query(Report_Sell)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		if err = rows.Scan(&total); err != nil {
+			return c.JSON(http.StatusInternalServerError, "")
+		}
+	}
+
+	return c.JSON(http.StatusOK, models.R2{Total: total})
+}

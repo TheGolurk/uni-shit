@@ -79,4 +79,6 @@ var (
 	Report_Client     = `SELECT COUNT(*) FROM USUARIO;`
 	Report_TipoAccess = `SELECT COUNT(*) FROM TIPO_ACCESO;`
 	Report_Acess      = `SELECT COUNT(*) FROM ACCESO;`
+
+	Report_Sell = `SELECT SUM(TOTAL) FROM VENTA;`
 )

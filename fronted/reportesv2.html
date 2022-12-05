@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Menu Personal</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/pricing/">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="./css/personal.css" rel="stylesheet">
+</head>
+
+
+
+<div class="b-example-divider"></div>
+<div class="container">
+    <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <img class="mb-2" src="./assets/logo.jpg" alt="" width="50" height="50">
+            <li><a href="#" class="nav-link px-2 link-dark">AMADOR RUSSELL</a></li>
+        </ul>
+        <div class="col-md-4 text-end">
+            <a href="./index.html"> <button type="button" onclick="Salir()" class="btn btn-primary">SALIR</button></a>
+        </div>
+    </header>
+</div>
+
+<div class="b-example-divider "></div>
+<div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 5rem;">
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="nav-item">
+            <a href="personal.html" class="nav-link active py-3 border-bottom rounded-0" aria-current="page"
+                title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+                <img class="mb-2" src="assets/home.png" alt="" width="40" height="40">
+            </a>
+        </li>
+    </ul>
+</div>
+
+<body>
+    <div class="container py-3">
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal">Reporte de ventas totales</h1>
+            <p class="fs-5 text-muted"></p>
+        </div>
+
+        <div>
+            <canvas id="myChart"></canvas>
+          </div>
+          
+
+          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/salir.js"></script>
+    <script src="js/reportev2.js"></script>
+</body>
+
+</html>

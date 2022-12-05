@@ -55,3 +55,7 @@ type R1 struct {
 	TipoAccesso int `json:"tipo_accesso,omitempty"`
 	Acceso      int `json:"acceso,omitempty"`
 }
+
+type R2 struct {
+	Total float64 `json:"total"`
+}
