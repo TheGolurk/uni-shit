@@ -1,5 +1,4 @@
 async function RegisterSale() {
-    let idVenta = document.getElementById('IdVenta').value;
     let idUser = document.getElementById('Idusuario').value;
     let idProduct = document.getElementById('IdProducto').value;
     let total = document.getElementById('Total').value;
@@ -9,7 +8,6 @@ async function RegisterSale() {
 
     const url = 'http://localhost:8070/venta/create';
     const body = {
-        "id_venta": parseInt(idVenta),
         "id_usuario_venta": parseInt(idUser),
         "id_pro": parseInt(idProduct),
         "total": parseFloat(total),

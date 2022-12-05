@@ -57,7 +57,16 @@ func (s *Service) UpdateSell(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "")
 	}
 
-	_, err := s.db.Exec(Venta_update)
+	_, err := s.db.Exec(
+		Venta_update,
+		venta.IdUsuarioVenta,
+		venta.IdPro,
+		venta.Total,
+		venta.Iva,
+		venta.FechaVenta,
+		venta.IdCli,
+		venta.IdVenta,
+	)
 
 	if err != nil {
 		log.Println(err)
@@ -83,6 +92,7 @@ func (s *Service) GetSell(c echo.Context) error {
 
 	for rows.Next() {
 		if err = rows.Scan(
+			&venta.IdVenta,
 			&venta.IdUsuarioVenta,
 			&venta.IdPro,
 			&venta.Total,

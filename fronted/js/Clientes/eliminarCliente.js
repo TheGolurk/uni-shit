@@ -1,8 +1,7 @@
 async function DeleteClient() {
     let id = document.getElementById('Idventa').value;
 
-    const url = `http://localhost:8070/cliente/delete?id=${id}`;
-
+    const url = `http://localhost:8070/cliente/delete?id=${ parseInt(id)}`;
 
     try {
         const resp = await axios.delete(url)

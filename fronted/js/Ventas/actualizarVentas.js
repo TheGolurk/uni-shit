@@ -1,4 +1,5 @@
 async function ModifySale() {
+    let id  = document.getElementById('IdVenta').value;
     let idUser = document.getElementById('Idusuario').value;
     let idProduct = document.getElementById('IdProducto').value;
     let total = document.getElementById('Total').value;
@@ -8,24 +9,25 @@ async function ModifySale() {
 
     const url = 'http://localhost:8070/venta/modify';
     const body = {
-        "IdUusarioVenta": idUser,
-        "IdPro": idProduct,
-        "Total": total,
-        "Iva": iva,
-        "FechaVenta": date,
-        "IdCli": idClient,
+        "id_venta": parseInt(id),
+        "id_usuario_venta": parseInt(idUser),
+        "id_pro": parseInt(idProduct),
+        "total": parseFloat(total),
+        "iva": parseFloat(iva),
+        "fecha_venta": date,
+        "id_cli": parseInt(idClient),
     };
 
     try {
         const resp = await axios.put(url, body)
-        showOKMessage('ok','Creado con exito');
+        showOKMessage('ok','Actualizado con exito');
 
     } catch (err) {
 
         switch (err.response.status) {
             // 409 Duplicado
             case 409:
-                showErrMessage('Error', 'No se pudo eliminar ');
+                showErrMessage('Error', 'No se pudo Modificar ');
                 break;
             // 400 el request esta mal
             case 400:

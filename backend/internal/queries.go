@@ -36,19 +36,21 @@ var (
 	WHERE ID_CLIENTE = ?;`
 
 	//VENTA
-	Venta_select = `SELECT ID_UsuarioVenta, ID_PRO, TOTAL, IVA, FECHA_VENTA, ID_CLI FROM VENTA;`
+	Venta_select = `SELECT ID_VENTA,ID_UsuarioVenta, ID_PRO, TOTAL, IVA, FECHA_VENTA, ID_CLI FROM VENTA;`
 
 	Venta_create = `INSERT INTO VENTA(ID_UsuarioVenta, ID_PRO, TOTAL, IVA, FECHA_VENTA, ID_CLI)
     VALUES(?, ?, ?, ?, ?, ?);`
 
 	Venta_delete = `DELETE FROM VENTA WHERE ID_VENTA = ?;`
 
-	Venta_update = `UPDATE VENTA  SET ID_PRO = ?,
+	Venta_update = `UPDATE VENTA SET
+                 ID_UsuarioVenta = ?,
+    ID_PRO = ?,
 	TOTAL = ?,
 	IVA = ?,
 	FECHA_VENTA = ?,
 	ID_CLI =?
-	WHERE ID_VENTA = 2;`
+	WHERE ID_VENTA = ?;`
 
 	//PRODUCTO
 	Producto_select = `SELECT PESOxUNIDAD, PRECIOxUNIDAD FROM PRODUCTO;`

@@ -1,4 +1,5 @@
 async function ModifyClient() {
+    let id = document.getElementById('idClient').value;
     let name = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
     let actualAddress = document.getElementById('address').value;
@@ -6,16 +7,17 @@ async function ModifyClient() {
 
     const url = 'http://localhost:8070/cliente/modify';
     const body = {
-        "Nombre": name,
-        "Apellido": lastName,
-        "Direccion": actualAddress,
-        "Estado": state,
+        "id_cliente": parseInt(id),
+        "nombre": name,
+        "apellido": lastName,
+        "direccion": actualAddress,
+        "estado": state,
     };
 
     try {
         const resp = await axios.put(url, body)
         
-        showOKMessage('ok','Creado con exito');
+        showOKMessage('ok','Actualizado con exito');
 
     } catch (err) {
         switch (err.response.status) {

@@ -1,5 +1,4 @@
 async function RegisterClient() {
-    let id = document.getElementById('idCliente').value;
     let name = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
     let actualAddress = document.getElementById('address').value;
@@ -7,11 +6,10 @@ async function RegisterClient() {
 
     const url = 'http://localhost:8070/cliente/create';
     const body = {
-        "id_cliente": id,
-        "Nombre": name,
-        "Apellido": lastName,
-        "Direccion": actualAddress,
-        "Estado": state,
+        "nombre": name,
+        "apellido": lastName,
+        "direccion": actualAddress,
+        "estado": state,
     };
 
     try {

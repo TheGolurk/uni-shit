@@ -10,7 +10,7 @@ async function ViewSale() {
             let row = table.insertRow();
 
             let idVenta = row.insertCell(0);
-            idventa.innerHTML = item.id_venta;
+            idVenta.innerHTML = item.id_venta;
 
             let idUsuario = row.insertCell(1);
             idUsuario.innerHTML = item.id_usuario_venta;
@@ -34,6 +34,6 @@ async function ViewSale() {
     } catch (err) {
         console.log(err);
     }
-
 }
+
 ViewSale();
