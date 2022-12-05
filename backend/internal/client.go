@@ -94,6 +94,7 @@ func (s *Service) GetClient(c echo.Context) error {
 
 	for rows.Next() {
 		if err = rows.Scan(
+			&client.IdCliente,
 			&client.Nombre,
 			&client.Apellido,
 			&client.Direccion,

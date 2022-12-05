@@ -49,3 +49,9 @@ type Acceso struct {
 	IdTipo int    `json:"id_tipo,omitempty"`
 	Tablas string `json:"tablas,omitempty"`
 }
+
+type R1 struct {
+	Cliente     int `json:"cliente,omitempty"`
+	TipoAccesso int `json:"tipo_accesso,omitempty"`
+	Acceso      int `json:"acceso,omitempty"`
+}

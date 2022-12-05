@@ -22,7 +22,7 @@ var (
 	Usuario_select = `SELECT ID_TIPO, TABLA, HORARIO_INICIO, HORARIO_FINAL FROM TIPO_ACCESO;`
 
 	// CLIENTE
-	Cliente_select = `SELECT NOMBRE, APELLIDO, DIRECCION, ESTADO FROM CLIENTE;`
+	Cliente_select = `SELECT * FROM CLIENTE;`
 
 	Cliente_create = `INSERT INTO CLIENTE( NOMBRE, APELLIDO, DIRECCION, ESTADO)
     VALUES(?, ?, ?,?);`
@@ -73,4 +73,8 @@ var (
 	TipoUser_get    = `SELECT * FROM TIPO_USUARIO;`
 	TipoUser_Update = `UPDATE TIPO_USUARIO SET TIPO_USUARIO = ? WHERE ID = ?;`
 	TipoUser_Delete = `DELETE FROM TIPO_USUARIO WHERE ID = ?;`
+
+	Report_Client     = `SELECT COUNT(*) FROM USUARIO;`
+	Report_TipoAccess = `SELECT COUNT(*) FROM TIPO_ACCESO;`
+	Report_Acess      = `SELECT COUNT(*) FROM ACCESO;`
 )
