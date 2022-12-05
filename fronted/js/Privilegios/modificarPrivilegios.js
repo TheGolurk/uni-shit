@@ -4,11 +4,11 @@ async function ModifyPrivileges() {
     let typeUser = document.getElementById('floatingType2').value;
     let table = document.getElementById('floatingInput').value;
 
-    const url = 'http://localhost:8080/accesohora/modify';
+    const url = 'http://localhost:8070/acces/modify';
     const body = {
-        "id": idAccess,
-        "id_tipo": typeUser,
-        "tabla": table
+        "id": parseInt(idAccess),
+        "id_tipo": parseInt(typeUser),
+        "tablas": table
     };
 
     try {

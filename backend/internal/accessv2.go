@@ -28,16 +28,12 @@ func (s *Service) CreateAccessV2(c echo.Context) error {
 }
 
 func (s *Service) DeleteAccessV2(c echo.Context) error {
-	var (
-		access models.Acceso
-	)
-
-	if err := c.Bind(&access); err != nil {
-		log.Println(err)
+	id := c.QueryParam("id")
+	if id == "" {
 		return c.JSON(http.StatusBadRequest, "")
 	}
 
-	_, err := s.db.Exec(Acceso_delete, access.ID)
+	_, err := s.db.Exec(Acceso_delete, id)
 
 	if err != nil {
 		log.Println(err)

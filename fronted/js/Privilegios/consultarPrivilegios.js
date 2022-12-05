@@ -1,5 +1,5 @@
 async function GetPrivileges() {
-    const url = 'http://localhost:8070/accesohora/get';
+    const url = 'http://localhost:8070/acces/get';
 
     try {
         const resp = await axios.get(url)

@@ -34,19 +34,17 @@
         <form id="UserPrivileges-form">
             <h1 class="h3 mb-3 fw-normal">ASIGNACIÓN DE PRIVILEGIOS</h1>
             <img class="mb-4" src="../assets/asignarPrivilegios.png" alt="" width="70" height="70">
+            <br>
+            <br>
+            <select class="form-select" aria-label="Default select example" id="tipo">
+                <option selected>Seleccione el tipo de usuario</option>
+                <option value="1">Administrador</option>
+                <option value="2">Trabajador</option>
+              </select>
+            <br>
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingType1" placeholder="Text">
-                <label for="floatingInput">ID Acceso</label>
-            </div>
-            <br>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingType2" placeholder="Text">
-                <label for="floatingInput">Tipo De Usuario</label>
-            </div>
-            <br>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingTable" placeholder="Text">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Text">
                 <label for="floatingInput">Tablas permitidas</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="AssignPrivileges()">Asignar</button>

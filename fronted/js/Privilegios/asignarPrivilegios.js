@@ -1,14 +1,12 @@
 async function AssignPrivileges() {
 
-    let idAccess = document.getElementById('floatingType1').value;
-    let typeUser = document.getElementById('floatingType2').value;
+    let typeUser = document.getElementById('tipo').value;
     let table = document.getElementById('floatingInput').value;
 
-    const url = 'http://localhost:8080/accesohora/create';
+    const url = 'http://localhost:8070/acces/create';
     const body = {
-        "id": idAccess,
-        "id_tipo": typeUser,
-        "tabla": table
+        "id_tipo": parseInt(typeUser),
+        "tablas": table
     };
 
     try {

@@ -3,10 +3,8 @@ async function DeletePrivileges() {
     let idAccess = document.getElementById('floatingType1').value;
 
 
-    const url = `http://localhost:8080/accesohora/delete?=${idAccess};`;
-    const body = {
-        "id": idAccess,
-    };
+    const url = `http://localhost:8070/acces/delete?id=${parseInt(idAccess)}`;
+
 
     try {
         const resp = await axios.delete(url)
