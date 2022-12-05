@@ -33,16 +33,12 @@ func (s *Service) CreateAccess(c echo.Context) error {
 }
 
 func (s *Service) DeleteAccess(c echo.Context) error {
-	var (
-		access models.UserAccess
-	)
-
-	if err := c.Bind(&access); err != nil {
-		log.Println(err)
-		return c.JSON(http.StatusBadRequest, "")
+	id := c.QueryParam("id")
+	if id == "" {
+		return c.JSON(http.StatusBadRequest, "id faltante")
 	}
 
-	_, err := s.db.Exec(Tipoacceso_delete, access.IDTipo)
+	_, err := s.db.Exec(Tipoacceso_delete, id)
 
 	if err != nil {
 		log.Println(err)
@@ -67,6 +63,7 @@ func (s *Service) UpdateAccess(c echo.Context) error {
 		access.HoraInicio,
 		access.HoraFinal,
 		access.IDTipo,
+		access.ID,
 	)
 
 	if err != nil {
@@ -93,6 +90,7 @@ func (s *Service) GetAccess(c echo.Context) error {
 
 	for rows.Next() {
 		if err = rows.Scan(
+			&access.ID,
 			&access.IDTipo,
 			&access.HoraInicio,
 			&access.HoraFinal,

@@ -1,20 +1,22 @@
-async function CreateSchedule() {
+async function ModifySchedule() {
     let startTime = document.getElementById('StartTime').value;
     let finalTime = document.getElementById('FinalTime').value;
     let typeUser = document.getElementById('UserType').value;
+    let id = document.getElementById('idv').value;
 
 
     const url = 'http://localhost:8070/accesohora/modify';
     const body = {
-        "HoraInicio": startTime,
-        "HoraFinal": finalTime,
-        "IDTipo": parseInt(typeUser),
+        "hora_inicio": startTime,
+        "hora_final": finalTime,
+        "id_Tipo": parseInt(typeUser),
+        "id": parseInt(id),
     };
 
     try {
         const resp = await axios.put(url, body);
         
-        showOKMessage('Actualizado correctamente');
+        showOKMessage('OK', 'Actualizado correctamente');
         
     } catch (err) {
         switch (err.response.status) {

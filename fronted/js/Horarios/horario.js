@@ -5,8 +5,8 @@ async function CreateSchedule() {
 
     const url = 'http://localhost:8070/accesohora/create';
     const body = {
-        "Hora_inicio": startTime,
-        "Hora_final": finalTime,
+        "hora_inicio": startTime,
+        "hora_final": finalTime,
         "id_tipo": parseInt(typeUser),
     };
 

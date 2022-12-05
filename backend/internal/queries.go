@@ -7,13 +7,14 @@ var (
 
 	Tipoacceso_update = `UPDATE TIPO_ACCESO SET 
 	HORARIO_INICIO = ?,
-	HORARIO_FINAL = ?
-	WHERE ID_TIPO = ?;`
+	HORARIO_FINAL = ?,
+	ID_TIPO = ?
+	WHERE ID = ?;`
 
-	Tipoacceso_delete = `DELETE FROM TIPO_ACCESO WHERE ID_TIPO = ?;`
+	Tipoacceso_delete = `DELETE FROM TIPO_ACCESO WHERE ID = ?;`
 
 	Tipoacceso_create = `
-	INSERT INTO TIPO_ACCESO(ID_TIPO HORARIO_INICIO, HORARIO_FINAL)
+	INSERT INTO TIPO_ACCESO(ID_TIPO, HORARIO_INICIO, HORARIO_FINAL)
     VALUES(?, ?, ?);
 	`
 
@@ -60,4 +61,10 @@ var (
 	Producto_update = `UPDATE PRODUCTO SET PESOxUNIDAD = ?,
 	PRECIOxUNIDAD = ?
 	WHERE ID_PRODUCTO = ?;`
+
+	// ACCESO
+	Acceso_create = `INSERT INTO ACCESO(ID_TIPO, TABLAS) VALUES(?, ?);`
+	Acceso_get    = `SELECT * FROM ACCESO;`
+	Acceso_delete = `DELETE FROM ACCESO WHERE ID = ?;`
+	Acceso_update = `UPDATE ACCESO SET ID_TIPO = ?, TABLAS = ? WHERE ID = ?;`
 )
