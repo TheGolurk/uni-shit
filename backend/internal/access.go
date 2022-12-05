@@ -46,7 +46,6 @@ func (s *Service) DeleteAccess(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, "created")
-
 }
 
 func (s *Service) UpdateAccess(c echo.Context) error {

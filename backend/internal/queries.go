@@ -67,4 +67,10 @@ var (
 	Acceso_get    = `SELECT * FROM ACCESO;`
 	Acceso_delete = `DELETE FROM ACCESO WHERE ID = ?;`
 	Acceso_update = `UPDATE ACCESO SET ID_TIPO = ?, TABLAS = ? WHERE ID = ?;`
+
+	// TIPO USUARIO
+	TipoUser_Create = `INSERT INTO TIPO_USUARIO(TIPO_USUARIO) VALUES(?);`
+	TipoUser_get    = `SELECT * FROM TIPO_USUARIO;`
+	TipoUser_Update = `UPDATE TIPO_USUARIO SET TIPO_USUARIO = ? WHERE ID = ?;`
+	TipoUser_Delete = `DELETE FROM TIPO_USUARIO WHERE ID = ?;`
 )

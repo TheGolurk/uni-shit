@@ -6,17 +6,16 @@ async function UpdateTypeUser() {
 
     const url = 'http://localhost:8070/typeuser/modify';
     const body = {
-
-        "id":id,
+        "id": parseInt(id),
         "tipo_usuario": type,
     };
 
     console.log(body);
 
     try {
-        const resp = await axios.post(url, body)
+        const resp = await axios.put(url, body)
 
-        showOKMessage('ok','Creado con exito');
+        showOKMessage('ok','Actualizado con exito');
 
     } catch (err) {
         switch (err.response.status) {

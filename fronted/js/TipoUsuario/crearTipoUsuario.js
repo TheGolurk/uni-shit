@@ -4,11 +4,9 @@ async function CreateTypeUser() {
 
     const url = 'http://localhost:8070/typeuser/create';
     const body = {
-
         "tipo_usuario": type,
     };
 
-    console.log(body);
 
     try {
         const resp = await axios.post(url, body)
@@ -16,6 +14,7 @@ async function CreateTypeUser() {
         showOKMessage('ok','Creado con exito');
 
     } catch (err) {
+        console.log(err);
         switch (err.response.status) {
             // 409 Duplicado
             case 409:

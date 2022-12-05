@@ -1,20 +1,13 @@
-async function UpdateTypeUser() {
+async function DeleteTypeUser() {
 
     let id = document.getElementById('floatingID').value;
 
-
-    const url = `http://localhost:8070/typeuser/delete?=${id};`;
-    const body = {
-
-        "id":id,
-    };
-
-    console.log(body);
+    const url = `http://localhost:8070/typeuser/delete?id=${parseInt(id)}`;
 
     try {
-        const resp = await axios.post(url, body)
+        const resp = await axios.delete(url)
 
-        showOKMessage('ok','Creado con exito');
+        showOKMessage('ok','Eliminado con exito');
 
     } catch (err) {
         switch (err.response.status) {
@@ -40,7 +33,7 @@ async function UpdateTypeUser() {
 }
 
 
-var form = document.getElementById("CreateTypeUser-form");
+var form = document.getElementById("CreateUser-form");
 function handleForm(event) {
     event.preventDefault();
 }

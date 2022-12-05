@@ -1,5 +1,5 @@
 async function ViewTYpe() {
-    const url = 'http://localhost:8070/typeUser/get';
+    const url = 'http://localhost:8070/typeuser/get';
 
     try {
         const resp = await axios.get(url)
@@ -21,4 +21,6 @@ async function ViewTYpe() {
     }
 
 }
-ViewType();
+
+
+ViewTYpe();
