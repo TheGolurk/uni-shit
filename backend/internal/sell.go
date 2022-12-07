@@ -13,6 +13,10 @@ func (s *Service) CreateSell(c echo.Context) error {
 		sell models.Venta
 	)
 
+	if err := s.AuthUserAccess(c.QueryParam("idtipo"), "Venta"); err != nil {
+		return c.JSON(http.StatusUnauthorized, "")
+	}
+
 	if err := c.Bind(&sell); err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusBadRequest, "")
@@ -30,6 +34,11 @@ func (s *Service) CreateSell(c echo.Context) error {
 }
 
 func (s *Service) DeleteSell(c echo.Context) error {
+
+	if err := s.AuthUserAccess(c.QueryParam("idtipo"), "Venta"); err != nil {
+		return c.JSON(http.StatusUnauthorized, "")
+	}
+
 	ID := c.QueryParam("id")
 
 	if ID == "" {
@@ -48,6 +57,10 @@ func (s *Service) DeleteSell(c echo.Context) error {
 }
 
 func (s *Service) UpdateSell(c echo.Context) error {
+	if err := s.AuthUserAccess(c.QueryParam("idtipo"), "Venta"); err != nil {
+		return c.JSON(http.StatusUnauthorized, "")
+	}
+
 	var (
 		venta models.Venta
 	)

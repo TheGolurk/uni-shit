@@ -9,6 +9,10 @@ import (
 )
 
 func (s *Service) CreateClient(c echo.Context) error {
+
+	if err := s.AuthUserAccess(c.QueryParam("idtipo"), "Cliente"); err != nil {
+		return c.JSON(http.StatusUnauthorized, "")
+	}
 	var (
 		client models.Cliente
 	)
@@ -35,6 +39,9 @@ func (s *Service) CreateClient(c echo.Context) error {
 }
 
 func (s *Service) DeleteClient(c echo.Context) error {
+	if err := s.AuthUserAccess(c.QueryParam("idtipo"), "Cliente"); err != nil {
+		return c.JSON(http.StatusUnauthorized, "")
+	}
 	id := c.QueryParam("id")
 	if id == "" {
 		log.Println("id no viene")
@@ -52,6 +59,9 @@ func (s *Service) DeleteClient(c echo.Context) error {
 }
 
 func (s *Service) UpdateClient(c echo.Context) error {
+	if err := s.AuthUserAccess(c.QueryParam("idtipo"), "Cliente"); err != nil {
+		return c.JSON(http.StatusUnauthorized, "")
+	}
 	var (
 		client models.Cliente
 	)
