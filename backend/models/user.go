@@ -59,3 +59,7 @@ type R1 struct {
 type R2 struct {
 	Total float64 `json:"total"`
 }
+
+type R3 struct {
+	Total int `json:"total,omitempty"`
+}

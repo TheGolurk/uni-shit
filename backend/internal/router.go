@@ -61,4 +61,5 @@ func SetRoutes(e *echo.Echo, db *sql.DB) {
 	e.POST("/db/backup", service.Backup)
 	e.GET("/reportes/userinfo", service.Reportv1)
 	e.GET("/reportes/totasell", service.Reportv2)
+	e.GET("/reportes/backup", service.Reportv3)
 }

@@ -79,3 +79,29 @@ func (s *Service) Reportv2(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, models.R2{Total: total})
 }
+
+func (s *Service) Reportv3(c echo.Context) error {
+	var (
+		total int
+	)
+	who := c.QueryParam("who")
+	where := c.QueryParam("where")
+
+	rows, err := s.db.Query(Report_db, where, who)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, "")
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		if err = rows.Scan(&total); err != nil {
+			return c.JSON(http.StatusBadRequest, "")
+		}
+	}
+	if total == 0 {
+		return c.JSON(http.StatusOK, models.R3{Total: 0})
+	}
+
+	return c.JSON(http.StatusOK, models.R3{Total: total})
+}

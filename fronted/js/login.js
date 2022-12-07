@@ -33,9 +33,12 @@ async function ExecuteLogin() {
 
     } catch (err) {
         console.log(err);
-        alert('Usuario o Contraseña invalidos');
+        if (err.response.status == 401) {
+            alert('No tienes permiso de acceder en este horario');
+        } else {
+            alert('Usuario o Contraseña invalidos');
+        }
     } 
-
 }
 
 function Salir() {

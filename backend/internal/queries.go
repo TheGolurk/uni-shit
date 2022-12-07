@@ -81,4 +81,6 @@ var (
 	Report_Acess      = `SELECT COUNT(*) FROM ACCESO;`
 
 	Report_Sell = `SELECT SUM(TOTAL) FROM VENTA;`
+
+	Report_db = `SELECT COUNT(*) FROM BACKUP_HISTORY WHERE DATE_OF_BACKUP = ? AND WHO = ?;`
 )

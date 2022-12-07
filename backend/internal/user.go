@@ -4,6 +4,8 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
@@ -48,6 +50,39 @@ func (s *Service) Login(c echo.Context) error {
 	if err = bcrypt.CompareHashAndPassword([]byte(*passwdValue), []byte(user.Password)); err != nil {
 		log.Println(err)
 		return c.JSON(http.StatusInternalServerError, "")
+	}
+
+	if IDTipo != nil && *IDTipo != 1 {
+		hourIniSTR := ""
+		hourFinSTR := ""
+		// get the hour
+		rows, err := s.db.Query("SELECT HORARIO_INICIO, HORARIO_FINAL FROM TIPO_ACCESO WHERE ID_TIPO = ? LIMIT 1;", *IDTipo)
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, "")
+		}
+
+		defer rows.Close()
+
+		for rows.Next() {
+			if err = rows.Scan(&hourIniSTR, &hourFinSTR); err != nil {
+				return c.JSON(http.StatusInternalServerError, "")
+			}
+		}
+
+		hour1, err := strconv.Atoi(hourIniSTR[:2])
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, "")
+		}
+		hour2, err := strconv.Atoi(hourFinSTR[:2])
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, "")
+		}
+
+		serverHour := time.Now().Hour()
+
+		if serverHour < hour1 || serverHour > hour2 {
+			return c.JSON(http.StatusUnauthorized, "")
+		}
 	}
 
 	return c.JSON(http.StatusOK, models.User{
