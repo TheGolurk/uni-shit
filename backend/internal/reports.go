@@ -64,7 +64,11 @@ func (s *Service) Reportv2(c echo.Context) error {
 		total float64
 	)
 
-	rows, err := s.db.Query(Report_Sell)
+	d1 := c.QueryParam("f_inicio")
+	d2 := c.QueryParam("f_final")
+	u := c.QueryParam("username")
+
+	rows, err := s.db.Query(Report_Sell, u, d1, d2)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, "")
 	}

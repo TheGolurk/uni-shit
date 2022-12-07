@@ -80,7 +80,7 @@ func (s *Service) Login(c echo.Context) error {
 
 		serverHour := time.Now().Hour()
 
-		if serverHour < hour1 || serverHour > hour2 {
+		if serverHour < hour1 || serverHour >= hour2 {
 			return c.JSON(http.StatusUnauthorized, "")
 		}
 	}

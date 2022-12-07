@@ -1,5 +1,9 @@
 async function CreateBackup() {
-    const url = 'http://localhost:8070/db/backup';
+
+    let cookie = getCookie('user-login');
+    let userinfo = JSON.parse(cookie);
+
+    const url = `http://localhost:8070/db/backup?username=${userinfo.username}`;
 
     try {
         const resp = await axios.post(url)

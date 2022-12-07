@@ -49,6 +49,32 @@
             <p class="fs-5 text-muted"></p>
         </div>
 
+        <main class="form-signin w-100 m-auto">
+            <form id="CreateTypeUser-form">
+    
+                <h1 class="h3 mb-3 fw-normal">Solicitar Reportes</h1>
+                <img class="mb-4" src="assets/actualizarTipoUser.png" alt="" width="70" height="70">
+    
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="who" placeholder="Text">
+                    <label for="floatingInput">ID Usuario</label>
+                </div>
+                <br>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="when" placeholder="Text">
+                    <label for="floatingInput">Fecha de inicio a Consultar (YYY-MM-DD)</label>
+                </div>
+                <br>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="when2" placeholder="Text">
+                    <label for="floatingInput">Fecha de fin a Consultar (YYY-MM-DD)</label>
+                </div>
+                <br>
+                <button class="w-100 btn btn-lg btn-primary"  onclick="SellReport()">Consultar</button>
+                <p class="mt-5 mb-3 text-muted">&copy;2022</p>
+            </form>
+        </main>
+
         <div>
             <canvas id="myChart"></canvas>
           </div>
